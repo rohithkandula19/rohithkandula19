@@ -17,8 +17,6 @@
 
 <br/>
 
-![Profile Views](https://komarev.com/ghpvc/?username=rohithkandula19&color=7b2fff&style=flat-square&label=Profile+Views)
-![GitHub followers](https://img.shields.io/github/followers/rohithkandula19?style=flat-square&color=00D9FF&labelColor=0D1117)
 
 </div>
 
