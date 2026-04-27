@@ -1,10 +1,10 @@
 <div align="center">
 
-<!-- UNIVERSE BANNER WITH STARS -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=0:000000,30:0a0a2e,60:0d1b4b,100:0a2a6e&height=280&section=header&text=Rohith%20Kandula&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&fontFamily=Georgia&desc=I%20don't%20just%20fine-tune%20models%20%E2%80%94%20I%20ship%20them.&descAlignY=58&descSize=19&descColor=00D9FF&stroke=00D9FF&strokeWidth=1"/>
+<!-- COSMIC UNIVERSE BANNER -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=0:000000,25:0d0221,50:1a0533,75:0d1b4b,100:000510&height=280&section=header&text=Rohith%20Kandula&fontSize=55&fontColor=c8a2ff&animation=fadeIn&fontAlignY=38&fontFamily=Georgia&desc=I%20don't%20just%20fine-tune%20models%20%E2%80%94%20I%20ship%20them.&descAlignY=58&descSize=19&descColor=00D9FF&stroke=7b2fff&strokeWidth=2"/>
 
-<!-- TYPING ANIMATION -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=18&pause=1200&color=00D9FF&center=true&vCenter=true&width=750&height=60&lines=🤖+AI%2FML+Engineer+based+in+Charlotte%2C+NC;🧠+Built+RO+MedRAG+—+Agentic+RAG+for+Medical+Literature+on+GCP;💩+Built+BullshiftDetector+—+Claude-powered+LinkedIn+Cringe+Detector;🎯+Built+RO+AI+Recommendation+Engine+—+Netflix-style+Two-Tower+ML;📊+Built+ROVA+AI+Forecasting+—+PyTorch+ML+Platform+on+GCP;🔍+Built+RO+Fraud+Detection+—+Enterprise+AI+Platform+on+AWS;🚌+Built+MR+Buses+—+AI-Powered+Bus+Booking+Platform+on+GCP;🟢+Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
+<!-- TYPING ANIMATION — ALL 6 PROJECTS -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=🤖+AI%2FML+Engineer+based+in+Charlotte%2C+NC;🧠+RO+MedRAG+—+Agentic+RAG+for+Medical+Literature+on+GCP;💩+BullshiftDetector+—+Claude-powered+LinkedIn+Cringe+Detector;🎯+RO+AI+Recommendation+Engine+—+Netflix-style+Two-Tower+ML;📊+ROVA+AI+Forecasting+—+PyTorch+NN+%2B+LSTM+Platform+on+GCP;🔍+RO+Fraud+Detection+—+Enterprise+LangGraph+AI+on+AWS;🚌+MR+Buses+—+AI-Powered+Bus+Booking+Platform+on+GCP;🟢+Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
 
 <br/>
 
@@ -12,20 +12,19 @@
 [![RO MedRAG](https://img.shields.io/badge/RO_MedRAG-Live-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
 [![BullshiftDetector](https://img.shields.io/badge/BullshiftDetector-Live-FF4444?style=for-the-badge&logo=googlechrome&logoColor=white)](https://bullshiftdetector.web.app)
 [![MR Buses](https://img.shields.io/badge/MR_Buses-Live-00FF88?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mrbusportal.com)
-[![Open To Work](https://img.shields.io/badge/Open_To_Work-AI_Engineer-FFD700?style=for-the-badge&logo=checkmarx&logoColor=black)](#)
+[![Fraud Detection](https://img.shields.io/badge/RO_Fraud_Detection-Live-FFD700?style=for-the-badge&logo=googlechrome&logoColor=black)](https://rover-ai.duckdns.org)
+[![Open To Work](https://img.shields.io/badge/Open_To_Work-AI_Engineer-7b2fff?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
 
 <br/>
 
-![Profile Views](https://komarev.com/ghpvc/?username=rohithkandula19&color=00D9FF&style=flat-square&label=Profile+Views)
+![Profile Views](https://komarev.com/ghpvc/?username=rohithkandula19&color=7b2fff&style=flat-square&label=Profile+Views)
 ![GitHub followers](https://img.shields.io/github/followers/rohithkandula19?style=flat-square&color=00D9FF&labelColor=0D1117)
 
 </div>
 
 ---
 
-<div align="center">
-<h2>🌌 WHO AM I</h2>
-</div>
+<div align="center"><h2>🌌 WHO AM I</h2></div>
 
 I'm an AI/ML Engineer who gets a kick out of taking ideas from zero to production. Not the kind who fine-tunes a model in a notebook and calls it a day — I mean actually shipping things: APIs, cloud deployments, real users, real data.
 
@@ -58,7 +57,7 @@ rohith = {
 ### 🧠 [RO MedRAG](https://romedrag.me)
 [![Live](https://img.shields.io/badge/🌐_LIVE-romedrag.me-00D9FF?style=flat-square)](https://romedrag.me)
 
-Medical research is buried in millions of papers. I built an agentic RAG system that searches PubMed in real-time, pulls the right papers, and synthesizes clinical answers using Claude Sonnet — all streamed live.
+Medical research is buried in millions of papers. I built an agentic RAG system that searches PubMed in real-time, pulls the right papers, and synthesizes clinical answers using Claude Sonnet — all streamed live to the user.
 
 ```
 LangGraph → FAISS → PubMed API → Claude Sonnet
@@ -75,7 +74,7 @@ FastAPI → GCP Cloud Run → PostgreSQL → SSE
 ### 🎯 [RO AI Recommendation Engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 
-I got curious about how Netflix actually works under the hood. So I built it — a proper two-tower PyTorch model with BPR loss, 4-source candidate generation, LightGBM reranking, and a Kafka event pipeline running on Kubernetes.
+I got curious about how Netflix actually works under the hood — so I built it. A proper two-tower PyTorch model with BPR loss, 4-source candidate generation, LightGBM reranking, and a Kafka event pipeline on Kubernetes.
 
 ```
 PyTorch BPR → FAISS IVFPQ → LightGBM LTR → MMR (λ=0.7)
@@ -93,7 +92,7 @@ Kafka → ClickHouse → Kubernetes HPA → Terraform EKS
 ### 💩 [BullshiftDetector](https://bullshiftdetector.web.app)
 [![Live](https://img.shields.io/badge/🌐_LIVE-bullshiftdetector.web.app-FF4444?style=flat-square)](https://bullshiftdetector.web.app)
 
-I got tired of seeing *"Humbled and excited to announce"* for the 50th time. So I built a Claude-powered detector that scores LinkedIn posts for corporate cringe (0–100), generates a one-line roast, and rewrites it like a normal human. People love it.
+I got tired of seeing *"Humbled and excited to announce"* for the 50th time. So I built a Claude-powered detector that scores LinkedIn posts for corporate cringe (0–100), generates a one-line roast, and rewrites it like a normal human. Because someone had to.
 
 ```
 Claude API → FastAPI → Next.js 14
@@ -109,7 +108,7 @@ GCP Cloud Run → Firebase Hosting
 ### 📊 [ROVA AI Forecasting](https://github.com/rohithkandula19/rova-ai-forecasting)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/rova-ai-forecasting)
 
-A full ML forecasting platform with a proper pipeline — PyTorch NN + LSTM ensemble, 128-dimensional feature engineering, SHAP attributions for explainability, and KL-divergence drift detection that auto-retrains the model when distribution shifts. 14 screens. All on GCP.
+A full ML forecasting platform with a proper pipeline — PyTorch NN + LSTM ensemble, 128-dimensional feature engineering, SHAP attributions for explainability, and KL-divergence drift detection that auto-retrains when distribution shifts. 14 screens on GCP.
 
 ```
 PyTorch NN + LSTM → MLflow → Celery + Redis
@@ -127,7 +126,7 @@ Prometheus + Grafana → GCP Cloud Run
 ### 🔍 [RO Fraud Detection](https://rover-ai.duckdns.org)
 [![Live](https://img.shields.io/badge/🌐_LIVE-rover--ai.duckdns.org-00FF88?style=flat-square)](https://rover-ai.duckdns.org)
 
-Enterprise fraud detection with LangGraph agents doing the heavy lifting — real-time risk scoring, multi-step reasoning on each transaction, full audit trail. Deployed on AWS EC2 with Nginx and SSL. Actually production-grade.
+Enterprise fraud detection with LangGraph agents doing the heavy lifting — real-time risk scoring, multi-step reasoning on each transaction, full audit trail on every decision. Deployed on AWS EC2 with Nginx and SSL. Actually production-grade.
 
 ```
 LangGraph Agents → FastAPI → SQLAlchemy
@@ -159,13 +158,11 @@ Cloud SQL PostgreSQL → Firebase Hosting
 
 ---
 
-<div align="center">
-<h2>🛠️ STACK</h2>
-</div>
+<div align="center"><h2>🛠️ STACK</h2></div>
 
 <div align="center">
 
-**AI / ML**
+**🤖 AI / ML**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
@@ -175,7 +172,7 @@ Cloud SQL PostgreSQL → Firebase Hosting
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
 
-**Backend / Data**
+**⚙️ Backend / Data**
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -184,7 +181,7 @@ Cloud SQL PostgreSQL → Firebase Hosting
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B35?style=for-the-badge)
 
-**Cloud / MLOps**
+**☁️ Cloud / MLOps**
 
 ![GCP](https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
@@ -193,7 +190,7 @@ Cloud SQL PostgreSQL → Firebase Hosting
 ![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 
-**Frontend**
+**🎨 Frontend**
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -204,26 +201,22 @@ Cloud SQL PostgreSQL → Firebase Hosting
 
 ---
 
-<div align="center">
-<h2>📊 GITHUB STATS</h2>
-</div>
+<div align="center"><h2>📊 GITHUB STATS</h2></div>
 
 <div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=rohithkandula19&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=00D9FF&icon_color=00D9FF&text_color=FFFFFF"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rohithkandula19&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&text_color=FFFFFF&langs_count=8"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api?username=rohithkandula19&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=7b2fff&icon_color=00D9FF&text_color=FFFFFF"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rohithkandula19&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=7b2fff&text_color=FFFFFF&langs_count=8"/>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=rohithkandula19&theme=tokyonight&hide_border=true&background=0D1117&ring=00D9FF&fire=00FF88&currStreakLabel=00D9FF&sideLabels=FFFFFF&dates=AAAAAA"/>
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=rohithkandula19&theme=tokyonight&hide_border=true&background=0D1117&ring=7b2fff&fire=00D9FF&currStreakLabel=7b2fff&sideLabels=FFFFFF&dates=AAAAAA"/>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=rohithkandula19&theme=tokyo-night&bg_color=0D1117&color=00D9FF&line=00D9FF&point=00FF88&area=true&hide_border=true" width="100%"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=rohithkandula19&theme=tokyo-night&bg_color=0D1117&color=7b2fff&line=00D9FF&point=c8a2ff&area=true&hide_border=true" width="100%"/>
 
 </div>
 
 ---
 
-<div align="center">
-<h2>🏆 CREDENTIALS</h2>
-</div>
+<div align="center"><h2>🏆 CREDENTIALS</h2></div>
 
 <div align="center">
 
@@ -241,15 +234,15 @@ Cloud SQL PostgreSQL → Firebase Hosting
 
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0a2a6e,50:0d1b4b,100:000000&height=120&section=footer&animation=fadeIn"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:000510,50:0d1b4b,100:1a0533&height=130&section=footer&animation=fadeIn"/>
 
-### 🟢 Open to AI Engineer · GenAI · LLM · MLOps roles — US (Remote / Hybrid / Onsite)
+### 🟢 Open to AI Engineer · GenAI · LLM · MLOps — US (Remote / Hybrid / Onsite)
 
 [![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula)
-[![MedRAG](https://img.shields.io/badge/See_My_Work-romedrag.me-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
+[![Portfolio](https://img.shields.io/badge/See_My_Work-romedrag.me-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
 
 <br/>
 
-*"The best way to predict the future is to build it."*
+*"The best time to build was yesterday. The second best time is right now."*
 
 </div>
