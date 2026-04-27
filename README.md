@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- UNIVERSE MOVING BACKGROUND -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=universe&height=420&section=header&text=Rohith%20Kandula&fontSize=60&fontColor=ffffff&fontAlignY=40&fontFamily=Georgia&desc=I%20don't%20just%20fine-tune%20models%20--%20I%20ship%20them.&descAlignY=56&descSize=20&descColor=00D9FF"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=0:000000,20:050014,50:0d0221,80:130533,100:000000&height=420&section=header&text=Rohith%20Kandula&fontSize=60&fontColor=c8a2ff&animation=fadeIn&fontAlignY=40&fontFamily=Georgia&desc=I%20don't%20just%20fine-tune%20models%20--%20I%20ship%20them.&descAlignY=57&descSize=20&descColor=00D9FF&stroke=7b2fff&strokeWidth=2"/>
 
 <!-- TYPING ANIMATION — ALL 6 PROJECTS -->
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;RO+MedRAG+--+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+--+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+--+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+--+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+--+Enterprise+LangGraph+AI+on+AWS;MR+Buses+--+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
@@ -234,7 +234,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=universe&height=150&section=footer&text=Open%20to%20Work&fontSize=30&fontColor=ffffff&fontAlignY=50&desc=AI%20Engineer%20%7C%20GenAI%20%7C%20LLM%20%7C%20MLOps%20--%20US%20Remote%20%2F%20Hybrid%20%2F%20Onsite&descAlignY=68&descSize=14&descColor=00D9FF"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=0:000000,50:130533,100:000000&height=150&section=footer&animation=fadeIn"/>
 
 [![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula)
 [![Portfolio](https://img.shields.io/badge/See_My_Work-romedrag.me-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
