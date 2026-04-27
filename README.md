@@ -1,17 +1,18 @@
 <div align="center">
 
-<!-- ANIMATED BANNER -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Rohith%20Kandula&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=35&desc=I%20don't%20just%20fine-tune%20models%20—%20I%20ship%20them.&descAlignY=55&descSize=18"/>
+<!-- UNIVERSE BANNER WITH STARS -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=0:000000,30:0a0a2e,60:0d1b4b,100:0a2a6e&height=280&section=header&text=Rohith%20Kandula&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&fontFamily=Georgia&desc=I%20don't%20just%20fine-tune%20models%20%E2%80%94%20I%20ship%20them.&descAlignY=58&descSize=19&descColor=00D9FF&stroke=00D9FF&strokeWidth=1"/>
 
-<!-- ANIMATED TYPING -->
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=20&pause=1000&color=00D9FF&center=true&vCenter=true&random=false&width=700&lines=🤖+AI%2FML+Engineer+%7C+Charlotte%2C+NC;🧠+LLM+·+RAG+·+LangGraph+·+Agentic+Systems;⚡+GCP+·+AWS+·+PyTorch+·+FastAPI+·+Docker;🚀+6+Production+AI+Systems+Shipped+%26+Live;🎯+Targeting+Anthropic+·+OpenAI+·+Google+DeepMind" alt="Typing SVG" />
+<!-- TYPING ANIMATION -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=18&pause=1200&color=00D9FF&center=true&vCenter=true&width=750&height=60&lines=🤖+AI%2FML+Engineer+based+in+Charlotte%2C+NC;🧠+Built+RO+MedRAG+—+Agentic+RAG+for+Medical+Literature+on+GCP;💩+Built+BullshiftDetector+—+Claude-powered+LinkedIn+Cringe+Detector;🎯+Built+RO+AI+Recommendation+Engine+—+Netflix-style+Two-Tower+ML;📊+Built+ROVA+AI+Forecasting+—+PyTorch+ML+Platform+on+GCP;🔍+Built+RO+Fraud+Detection+—+Enterprise+AI+Platform+on+AWS;🚌+Built+MR+Buses+—+AI-Powered+Bus+Booking+Platform+on+GCP;🟢+Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
 
-<br/><br/>
+<br/>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula)
-[![Portfolio](https://img.shields.io/badge/RO_MedRAG-Live_Demo-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
-[![BullshiftDetector](https://img.shields.io/badge/BullshiftDetector-Try_It-FF4444?style=for-the-badge&logo=googlechrome&logoColor=white)](https://bullshiftdetector.web.app)
-[![Status](https://img.shields.io/badge/Status-Open_To_Work-00FF88?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
+[![RO MedRAG](https://img.shields.io/badge/RO_MedRAG-Live-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
+[![BullshiftDetector](https://img.shields.io/badge/BullshiftDetector-Live-FF4444?style=for-the-badge&logo=googlechrome&logoColor=white)](https://bullshiftdetector.web.app)
+[![MR Buses](https://img.shields.io/badge/MR_Buses-Live-00FF88?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mrbusportal.com)
+[![Open To Work](https://img.shields.io/badge/Open_To_Work-AI_Engineer-FFD700?style=for-the-badge&logo=checkmarx&logoColor=black)](#)
 
 <br/>
 
@@ -22,41 +23,32 @@
 
 ---
 
-<div align="center"><h2>⚡ WHO AM I</h2></div>
+<div align="center">
+<h2>🌌 WHO AM I</h2>
+</div>
+
+I'm an AI/ML Engineer who gets a kick out of taking ideas from zero to production. Not the kind who fine-tunes a model in a notebook and calls it a day — I mean actually shipping things: APIs, cloud deployments, real users, real data.
+
+I've spent the last 4+ years obsessing over the full stack of AI — from training PyTorch models and building RAG pipelines to wiring up Kafka event streams and deploying on GCP and AWS. If it involves LLMs, agents, or real-time ML, I've probably broken it three times and shipped it on the fourth.
+
+Right now I'm building toward roles at companies that actually push the frontier — Anthropic, OpenAI, Google DeepMind. Not because of the hype, but because I genuinely care about where this technology goes.
 
 ```python
-class RohithKandula:
-    def __init__(self):
-        self.role       = "AI/ML Engineer"
-        self.location   = "Charlotte, NC 🇺🇸"
-        self.education  = "MS Information Technology — University of Cincinnati (GPA: 3.89)"
-        self.cert       = "AWS Solutions Architect Associate"
-        self.edge       = "I close the loop — idea → model → API → Docker → Cloud → Live"
-
-    @property
-    def stack(self):
-        return {
-            "LLM_Frameworks" : ["LangChain", "LangGraph", "Claude API", "OpenAI"],
-            "ML"             : ["PyTorch", "scikit-learn", "FAISS", "MLflow"],
-            "Backend"        : ["FastAPI", "PostgreSQL", "Redis", "Celery", "Kafka"],
-            "Cloud"          : ["GCP Cloud Run", "AWS EC2", "Docker", "Kubernetes", "Terraform"],
-            "Frontend"       : ["Next.js 14", "React", "TypeScript", "Tailwind CSS"],
-        }
-
-    @property
-    def status(self):
-        return "🟢 Open to AI Engineer · GenAI · LLM · MLOps roles — US (Remote/Hybrid/Onsite)"
-
-me = RohithKandula()
-print(me.status)
-# 🟢 Open to AI Engineer · GenAI · LLM · MLOps roles — US (Remote/Hybrid/Onsite)
+rohith = {
+    "location"  : "Charlotte, NC 🇺🇸",
+    "education" : "MS Information Technology — University of Cincinnati (GPA: 3.89)",
+    "cert"      : "AWS Solutions Architect Associate",
+    "currently" : "Building production AI systems. Shipping. Repeating.",
+    "targeting" : ["Anthropic", "OpenAI", "Google DeepMind", "Meta AI"],
+    "status"    : "🟢 Open to AI Engineer · GenAI · LLM · MLOps — US",
+}
 ```
 
 ---
 
 <div align="center">
-<h2>🚀 PRODUCTION SYSTEMS — BUILT & SHIPPED</h2>
-<p><i>Not side projects. Not tutorials. Real systems. Real users.</i></p>
+<h2>🚀 THINGS I'VE BUILT & SHIPPED</h2>
+<p><i>6 production systems. All live. All mine.</i></p>
 </div>
 
 <table>
@@ -66,15 +58,12 @@ print(me.status)
 ### 🧠 [RO MedRAG](https://romedrag.me)
 [![Live](https://img.shields.io/badge/🌐_LIVE-romedrag.me-00D9FF?style=flat-square)](https://romedrag.me)
 
-**Agentic RAG for Medical Literature Analysis**
-
-Production RAG system that searches, retrieves and synthesizes clinical research from PubMed in real-time with SSE streaming.
+Medical research is buried in millions of papers. I built an agentic RAG system that searches PubMed in real-time, pulls the right papers, and synthesizes clinical answers using Claude Sonnet — all streamed live.
 
 ```
 LangGraph → FAISS → PubMed API → Claude Sonnet
-FastAPI → GCP Cloud Run → PostgreSQL
+FastAPI → GCP Cloud Run → PostgreSQL → SSE
 ```
-
 ![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square)
 ![FAISS](https://img.shields.io/badge/FAISS-00599C?style=flat-square)
 ![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
@@ -86,15 +75,12 @@ FastAPI → GCP Cloud Run → PostgreSQL
 ### 🎯 [RO AI Recommendation Engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 
-**Netflix-style Two-Tower ML System**
-
-PyTorch two-tower model with BPR loss, 4-source candidate generation, 5 recommendation surfaces, 11 event types, Kafka pipeline.
+I got curious about how Netflix actually works under the hood. So I built it — a proper two-tower PyTorch model with BPR loss, 4-source candidate generation, LightGBM reranking, and a Kafka event pipeline running on Kubernetes.
 
 ```
 PyTorch BPR → FAISS IVFPQ → LightGBM LTR → MMR (λ=0.7)
 Kafka → ClickHouse → Kubernetes HPA → Terraform EKS
 ```
-
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
 ![Kafka](https://img.shields.io/badge/Kafka-231F20?style=flat-square&logo=apachekafka&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
@@ -107,15 +93,12 @@ Kafka → ClickHouse → Kubernetes HPA → Terraform EKS
 ### 💩 [BullshiftDetector](https://bullshiftdetector.web.app)
 [![Live](https://img.shields.io/badge/🌐_LIVE-bullshiftdetector.web.app-FF4444?style=flat-square)](https://bullshiftdetector.web.app)
 
-**Claude-powered LinkedIn Cringe Detector**
-
-Scores LinkedIn posts for corporate buzzwords (0–100), generates a savage roast, rewrites it like a human. Because someone had to build it.
+I got tired of seeing *"Humbled and excited to announce"* for the 50th time. So I built a Claude-powered detector that scores LinkedIn posts for corporate cringe (0–100), generates a one-line roast, and rewrites it like a normal human. People love it.
 
 ```
 Claude API → FastAPI → Next.js 14
 GCP Cloud Run → Firebase Hosting
 ```
-
 ![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
@@ -126,15 +109,12 @@ GCP Cloud Run → Firebase Hosting
 ### 📊 [ROVA AI Forecasting](https://github.com/rohithkandula19/rova-ai-forecasting)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/rova-ai-forecasting)
 
-**Production ML Forecasting Platform on GCP**
-
-PyTorch NN + LSTM ensemble, 128-dim feature engineering, SHAP attributions, KL-divergence drift detection + auto-retraining. 14 screens.
+A full ML forecasting platform with a proper pipeline — PyTorch NN + LSTM ensemble, 128-dimensional feature engineering, SHAP attributions for explainability, and KL-divergence drift detection that auto-retrains the model when distribution shifts. 14 screens. All on GCP.
 
 ```
 PyTorch NN + LSTM → MLflow → Celery + Redis
 Prometheus + Grafana → GCP Cloud Run
 ```
-
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
 ![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=flat-square&logo=mlflow&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
@@ -145,17 +125,14 @@ Prometheus + Grafana → GCP Cloud Run
 <td width="50%" valign="top">
 
 ### 🔍 [RO Fraud Detection](https://rover-ai.duckdns.org)
-[![Live](https://img.shields.io/badge/🌐_LIVE-rover--ai.duckdns.org-00D9FF?style=flat-square)](https://rover-ai.duckdns.org)
+[![Live](https://img.shields.io/badge/🌐_LIVE-rover--ai.duckdns.org-00FF88?style=flat-square)](https://rover-ai.duckdns.org)
 
-**Enterprise Fraud Detection Platform on AWS**
-
-Real-time risk scoring with LangGraph agents, full audit trail, deployed on AWS EC2 with Nginx reverse proxy and Let's Encrypt SSL.
+Enterprise fraud detection with LangGraph agents doing the heavy lifting — real-time risk scoring, multi-step reasoning on each transaction, full audit trail. Deployed on AWS EC2 with Nginx and SSL. Actually production-grade.
 
 ```
 LangGraph Agents → FastAPI → SQLAlchemy
 AWS EC2 → Docker → Nginx → Let's Encrypt
 ```
-
 ![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
@@ -166,15 +143,12 @@ AWS EC2 → Docker → Nginx → Let's Encrypt
 ### 🚌 [MR Buses](https://mrbusportal.com)
 [![Live](https://img.shields.io/badge/🌐_LIVE-mrbusportal.com-00D9FF?style=flat-square)](https://mrbusportal.com)
 
-**AI-Powered Interstate Bus Booking Platform**
-
-Full-stack booking platform with RAG chatbot, Google OAuth, real-time seat booking and admin dashboard on GCP.
+A full interstate bus booking platform with an AI chatbot that actually knows the routes, schedules, and can help you book — not just answer FAQs. Google OAuth, real-time seat booking, admin dashboard. Live on GCP.
 
 ```
 LangChain RAG → FastAPI → GCP Cloud Run
 Cloud SQL PostgreSQL → Firebase Hosting
 ```
-
 ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square)
 ![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
@@ -185,11 +159,13 @@ Cloud SQL PostgreSQL → Firebase Hosting
 
 ---
 
-<div align="center"><h2>🛠️ FULL TECH STACK</h2></div>
+<div align="center">
+<h2>🛠️ STACK</h2>
+</div>
 
 <div align="center">
 
-**🤖 AI / ML / LLM**
+**AI / ML**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
@@ -198,18 +174,17 @@ Cloud SQL PostgreSQL → Firebase Hosting
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 
-**⚙️ Backend / Data**
+**Backend / Data**
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![Kafka](https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B35?style=for-the-badge&logoColor=white)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B35?style=for-the-badge)
 
-**☁️ Cloud / MLOps**
+**Cloud / MLOps**
 
 ![GCP](https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
@@ -218,7 +193,7 @@ Cloud SQL PostgreSQL → Firebase Hosting
 ![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 
-**🎨 Frontend**
+**Frontend**
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -229,7 +204,9 @@ Cloud SQL PostgreSQL → Firebase Hosting
 
 ---
 
-<div align="center"><h2>📊 GITHUB STATS</h2></div>
+<div align="center">
+<h2>📊 GITHUB STATS</h2>
+</div>
 
 <div align="center">
 
@@ -244,17 +221,19 @@ Cloud SQL PostgreSQL → Firebase Hosting
 
 ---
 
-<div align="center"><h2>🏆 CERTIFICATIONS & EDUCATION</h2></div>
+<div align="center">
+<h2>🏆 CREDENTIALS</h2>
+</div>
 
 <div align="center">
 
-| 🎓 Credential | 🏛️ Institution | 📅 |
-|---|---|---|
-| MS Information Technology (GPA: 3.89) | University of Cincinnati | 2024 |
-| AWS Solutions Architect Associate | Amazon Web Services | 2024 |
-| Deep Learning Specialization | Andrew Ng / DeepLearning.AI | 2024 |
-| LangChain & LLM Agents for Production | DeepLearning.AI | 2024 |
-| Claude 101 | Anthropic | 2024 |
+| 🎓 | Details |
+|---|---|
+| **MS Information Technology** | University of Cincinnati — GPA 3.89 · Dec 2024 |
+| **AWS Solutions Architect Associate** | Amazon Web Services · 2024 |
+| **Deep Learning Specialization** | Andrew Ng / DeepLearning.AI · 2024 |
+| **LangChain & LLM Agents for Production** | DeepLearning.AI · 2024 |
+| **Claude 101** | Anthropic · 2024 |
 
 </div>
 
@@ -262,18 +241,15 @@ Cloud SQL PostgreSQL → Firebase Hosting
 
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer&animation=twinkling"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0a2a6e,50:0d1b4b,100:000000&height=120&section=footer&animation=fadeIn"/>
 
-### 🟢 Open to AI Engineer · GenAI Engineer · LLM Engineer · MLOps Engineer
-### Remote · Hybrid · Onsite — Anywhere in the US
+### 🟢 Open to AI Engineer · GenAI · LLM · MLOps roles — US (Remote / Hybrid / Onsite)
 
-<br/>
-
-[![LinkedIn](https://img.shields.io/badge/Let's_Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula)
+[![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula)
 [![MedRAG](https://img.shields.io/badge/See_My_Work-romedrag.me-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
 
 <br/>
 
-*"I don't just fine-tune models — I ship them."*
+*"The best way to predict the future is to build it."*
 
 </div>
