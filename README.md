@@ -2,7 +2,6 @@
 
 <!-- UNIVERSE MOVING BACKGROUND -->
 <img width="100%" src="Git.svg"/>
-type=venom&color=0:000000,20:050014,50:0d0221,80:130533,100:000000&height=420&section=header&text=Rohith%20Kandula&fontSize=60&fontColor=c8a2ff&animation=fadeIn&fontAlignY=40&fontFamily=Georgia&desc=I%20don't%20just%20fine-tune%20models%20--%20I%20ship%20them.&descAlignY=57&descSize=20&descColor=00D9FF&stroke=7b2fff&strokeWidth=2"/>
 
 <!-- TYPING ANIMATION — ALL 6 PROJECTS -->
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;RO+MedRAG+--+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+--+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+--+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+--+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+--+Enterprise+LangGraph+AI+on+AWS;MR+Buses+--+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
