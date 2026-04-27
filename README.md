@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- UNIVERSE MOVING BACKGROUND -->
-<img width="100%" src="banner.svg"/>
+<img width="100%" src="Git.svg"/>
 type=venom&color=0:000000,20:050014,50:0d0221,80:130533,100:000000&height=420&section=header&text=Rohith%20Kandula&fontSize=60&fontColor=c8a2ff&animation=fadeIn&fontAlignY=40&fontFamily=Georgia&desc=I%20don't%20just%20fine-tune%20models%20--%20I%20ship%20them.&descAlignY=57&descSize=20&descColor=00D9FF&stroke=7b2fff&strokeWidth=2"/>
 
 <!-- TYPING ANIMATION — ALL 6 PROJECTS -->
