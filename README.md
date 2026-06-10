@@ -313,7 +313,8 @@ flowchart LR
 
 <details><summary>Recent moves</summary>
 
-<sub>No moves yet — drop the first disc!</sub>
+<sub>🔴 column 4 — @rohithkandula19</sub>  
+<sub>🟡 column 2 — bot</sub>
 
 </details>
 
