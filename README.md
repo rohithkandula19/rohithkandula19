@@ -331,6 +331,8 @@ Click a move → a pre-filled GitHub issue opens → press *Create* → a GitHub
   <img src="dist/pacman-contribution-graph.svg" width="100%" alt="Pac-Man eating my contribution graph — regenerated daily"/>
 </picture>
 
+<img src="dist/monkey-jungle.svg" width="100%" alt="The contribution jungle — bananas grow where the commits are, and a monkey swings across. Hand-built SVG, regenerated every 6 hours."/>
+
 </div>
 
 ---
