@@ -16,7 +16,18 @@ CELL = 11          # cell box size
 GAP = 2
 PAD_X = 12
 GRAPH_TOP = 58     # leave headroom for the vine + monkey
-LEVELS = ["#16241a", "#0e4429", "#006d32", "#26a641", "#39d353"]
+THEMES = {
+    "": {  # dark (default file keeps its original name)
+        "levels": ["#16241a", "#0e4429", "#006d32", "#26a641", "#39d353"],
+        "vine": "#3c5a3c",
+        "caption": "#7d8590",
+    },
+    "-light": {
+        "levels": ["#e8f0e8", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+        "vine": "#4a7a4a",
+        "caption": "#57606a",
+    },
+}
 
 
 def fetch_weeks():
@@ -50,8 +61,7 @@ def level(count, maximum):
     return max(1, min(4, math.ceil(4 * count / maximum)))
 
 
-def main():
-    weeks = fetch_weeks()
+def build_svg(weeks, theme):
     n_weeks = len(weeks)
     width = PAD_X * 2 + n_weeks * (CELL + GAP)
     height = GRAPH_TOP + 7 * (CELL + GAP) + 30
@@ -75,7 +85,7 @@ def main():
             lv = level(day["contributionCount"], maximum)
             cells.append(
                 f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" rx="2.5" '
-                f'fill="{LEVELS[lv]}"><title>{day["date"]}: '
+                f'fill="{theme["levels"][lv]}"><title>{day["date"]}: '
                 f'{day["contributionCount"]} contributions</title></rect>'
             )
             if day["contributionCount"] >= banana_cut and day["contributionCount"] > 0:
@@ -102,8 +112,8 @@ def main():
         back += f" q -30,26 -60,0"
         x -= 60
 
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-label="contribution jungle">
-  <path d="{vine}" fill="none" stroke="#3c5a3c" stroke-width="3" stroke-linecap="round"/>
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-label="contribution jungle">
+  <path d="{vine}" fill="none" stroke="{theme["vine"]}" stroke-width="3" stroke-linecap="round"/>
   <g font-size="10">{''.join(f'<text x="{vx}" y="{vine_y + 16}">🌿</text>' for vx in range(45, width, 120))}</g>
   {''.join(cells)}
   {''.join(bananas)}
@@ -111,13 +121,18 @@ def main():
     <text x="0" y="6" font-size="22" text-anchor="middle">🐒</text>
     <animateMotion dur="26s" repeatCount="indefinite" path="{fwd} {back}"/>
   </g>
-  <text x="{PAD_X}" y="{height - 10}" font-size="11" fill="#7d8590" font-family="ui-monospace, monospace">the contribution jungle — 🍌 grow where the commits are, 🐒 regenerated every 6h</text>
+  <text x="{PAD_X}" y="{height - 10}" font-size="11" fill="{theme["caption"]}" font-family="ui-monospace, monospace">the contribution jungle — 🍌 grow where the commits are, 🐒 regenerated every 6h</text>
 </svg>"""
 
+
+def main():
+    weeks = fetch_weeks()
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w", encoding="utf-8") as f:
-        f.write(svg)
-    print(f"monkey-jungle.svg written ({n_weeks} weeks, max {maximum}/day)")
+    for suffix, theme in THEMES.items():
+        path = OUT.replace(".svg", f"{suffix}.svg")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(build_svg(weeks, theme))
+        print(f"{os.path.basename(path)} written ({len(weeks)} weeks)")
 
 
 if __name__ == "__main__":
