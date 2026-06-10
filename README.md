@@ -283,8 +283,6 @@ flowchart LR
 
 <div align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=rohithkandula19&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8" width="100%"/>
-
 <img height="180em" src="https://github-readme-stats.vercel.app/api?username=rohithkandula19&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=7b2fff&icon_color=00D9FF&text_color=FFFFFF"/>
 <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rohithkandula19&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=7b2fff&text_color=FFFFFF&langs_count=8"/>
 
