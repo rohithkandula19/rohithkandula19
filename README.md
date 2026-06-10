@@ -307,9 +307,9 @@ flowchart LR
 <!-- ROHI:START -->
 <div align="center">
 
-<img src="assets/rohi/eating.jpg" width="100%" alt="Rohi the capuchin monkey, currently eating"/>
+<img src="assets/rohi/fighting.svg" width="100%" alt="Rohi the capuchin monkey, currently fighting"/>
 
-<sub>📷 <b>Rohi is having bananas on the log 🍌 · 1:54 PM in Charlotte · fed 44 🍌 today</b> · the photo rotates with his real schedule, every 2 hours</sub>
+<sub>📷 <b>Rohi is play-wrestling his cousin 🥊 · 2:01 PM in Charlotte · fed 46 🍌 today</b> · the photo rotates with his real schedule, every 2 hours</sub>
 
 </div>
 <!-- ROHI:END -->

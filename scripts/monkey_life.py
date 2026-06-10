@@ -88,7 +88,7 @@ def main():
     block = f"""
 <div align="center">
 
-<img src="assets/rohi/{act}.jpg" width="100%" alt="Rohi the capuchin monkey, currently {act}"/>
+<img src="assets/rohi/{act}.svg" width="100%" alt="Rohi the capuchin monkey, currently {act}"/>
 
 <sub>📷 <b>{caption}</b> · the photo rotates with his real schedule, every 2 hours</sub>
 
