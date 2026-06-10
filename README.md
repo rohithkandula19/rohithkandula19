@@ -247,11 +247,13 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 
 | Credential | Details |
 |---|---|
-| MS Information Technology | University of Cincinnati -- GPA 3.89 -- Dec 2024 |
-| AWS Solutions Architect Associate | Amazon Web Services 2024 |
-| Deep Learning Specialization | Andrew Ng / DeepLearning.AI 2024 |
-| LangChain and LLM Agents for Production | DeepLearning.AI 2024 |
-| Claude 101 | Anthropic 2024 |
+| [Claude with Google Cloud's Vertex AI](https://verify.skilljar.com/c/6nrrh5xfejxq) | Anthropic Education -- May 2026 |
+| [Claude 101](https://verify.skilljar.com/c/jqz4es75zbxm) | Anthropic -- Apr 2026 |
+| [AI Fluency: Framework & Foundations](https://verify.skilljar.com/c/2f42572kjdgg) | Anthropic -- Apr 2026 |
+| AWS Certified Solutions Architect -- Associate | Amazon Web Services -- May 2025 (exp. May 2028) |
+| MS, Information Technology | University of Cincinnati -- GPA 3.89 -- Dec 2024 |
+| Deep Learning Specialization | Andrew Ng / DeepLearning.AI -- 2024 |
+| LangChain & LLM Agents for Production | DeepLearning.AI -- 2024 |
 
 </div>
 
