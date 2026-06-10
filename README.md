@@ -16,6 +16,7 @@
 [![MR Buses](https://img.shields.io/badge/MR_Buses-Live-00FF88?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mrbusportal.com)
 [![Fraud Detection](https://img.shields.io/badge/RO_Fraud_Detection-Live-FFD700?style=for-the-badge&logo=googlechrome&logoColor=black)](https://rover-ai.duckdns.org)
 [![Open To Work](https://img.shields.io/badge/Open_To_Work-AI_Engineer-7b2fff?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
+[![Ask My AI](https://img.shields.io/badge/🤖_Ask_My_AI-the_site_talks_back-FF6B9D?style=for-the-badge)](https://www.rohithkandula.com)
 
 <br/>
 
@@ -290,6 +291,8 @@ flowchart LR
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=rohithkandula19&theme=tokyo-night&bg_color=0D1117&color=7b2fff&line=00D9FF&point=c8a2ff&area=true&hide_border=true" width="100%"/>
 
+<img src="profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3D contribution graph — regenerated daily by GitHub Actions"/>
+
 </div>
 
 ---
@@ -318,5 +321,7 @@ flowchart LR
 
 [![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula19)
 [![Portfolio](https://img.shields.io/badge/Portfolio-rohithkandula.com-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.rohithkandula.com)
+
+<sub>🤖 The portfolio has an AI narrator and an "Ask Rohith" chat — and it rewrites itself depending on whether you're a recruiter, an engineer, or just curious. Go say hi.</sub>
 
 </div>
