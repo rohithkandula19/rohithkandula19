@@ -183,7 +183,60 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 
 ---
 
+<div align="center"><h2>🛰️ LIVE STATUS</h2>
+<p><i>"All live" isn't a slogan — a GitHub Action pings every deployment and rewrites this table. Receipts, not vibes.</i></p></div>
+
+<div align="center">
+
+<!-- STATUS:START -->
+| System | Status | Response |
+|---|---|---|
+| [RO MedRAG](https://romedrag.me) | 🟢 LIVE | 120 ms |
+| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 36 ms |
+| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 41 ms |
+| [RO Fraud Detection](https://rover-ai.duckdns.org) | 🟢 LIVE | 254 ms |
+
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions — last run 2026-06-10 15:24 UTC</sub>
+<!-- STATUS:END -->
+
+</div>
+
+<div align="center"><h3>⚡ Recently shipped</h3></div>
+
+<!-- SHIPPED:START -->
+- **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-06-10 — Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
+- **[Ro-MedRag](https://github.com/rohithkandula19/Ro-MedRag)** · pushed 2026-06-10 — Production agentic RAG system for medical literature analysis. LangGraph + Claude Sonne…
+- **[ro-ai-recommendation-engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)** · pushed 2026-06-04
+- **[mr-bus-portal](https://github.com/rohithkandula19/mr-bus-portal)** · pushed 2026-06-04
+- **[Ro-Cortex](https://github.com/rohithkandula19/Ro-Cortex)** · pushed 2026-06-04
+<!-- SHIPPED:END -->
+
+---
+
 <div align="center"><h2>🛠️ STACK</h2></div>
+
+```mermaid
+flowchart LR
+    subgraph Data["📥 Data & Retrieval"]
+        PubMed[PubMed API] --> FAISS[(FAISS / BM25)]
+        Docs[Docs & Events] --> Kafka[Kafka] --> CH[(ClickHouse)]
+    end
+    subgraph Brain["🧠 Agents & Models"]
+        FAISS --> LG[LangGraph Agents]
+        LG <--> Claude[Claude API]
+        PT[PyTorch Two-Tower / LSTM] --> LGB[LightGBM Rerank]
+    end
+    subgraph Serve["🚀 Serving"]
+        LG --> API[FastAPI + SSE]
+        LGB --> API
+        API --> UI[Next.js / React]
+    end
+    subgraph Ops["☁️ Cloud & MLOps"]
+        API --> Run[GCP Cloud Run / AWS EC2]
+        Run --> K8s[Kubernetes + Terraform]
+        K8s --> Obs[MLflow · Prometheus · Grafana]
+    end
+```
 
 <div align="center">
 
@@ -229,6 +282,8 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <div align="center"><h2>📊 GITHUB STATS</h2></div>
 
 <div align="center">
+
+<img src="https://github-profile-trophy.vercel.app/?username=rohithkandula19&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8" width="100%"/>
 
 <img height="180em" src="https://github-readme-stats.vercel.app/api?username=rohithkandula19&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=7b2fff&icon_color=00D9FF&text_color=FFFFFF"/>
 <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rohithkandula19&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=7b2fff&text_color=FFFFFF&langs_count=8"/>
