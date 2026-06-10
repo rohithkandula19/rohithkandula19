@@ -302,11 +302,17 @@ flowchart LR
 
 <div align="center">
 
-**🐒 Meet Rohi — the resident monkey.** Hand-drawn, no emoji — and he lives here in real time: asleep under the stars at night (Charlotte time), bananas at dawn and noon, canopy-swinging in the morning, zoomies all afternoon, juggling at dusk. **Your commits are his food** — every push feeds him. The scene re-renders every 2 hours to whatever he's actually doing right now.
+**🐒 Meet Rohi — the resident monkey.** Not a cartoon — Rohi is **AI-photographed in the wild** (Higgsfield, character-consistent across scenes), and he lives here in real time on Charlotte hours: bananas for breakfast and lunch, canopy-swinging in the morning, **play-wrestling his cousin** in the afternoon, and after dinner he sleeps **belly-up like an uncle** under the fireflies. **Your commits are his food** — every push feeds him.
 
-<img src="dist/monkey-life.svg" width="100%" alt="Rohi the monkey living his life — sky, activity, and banana count update every 2 hours"/>
+<!-- ROHI:START -->
+<div align="center">
+
+<img src="assets/rohi/eating.jpg" width="100%" alt="Rohi the capuchin monkey, currently eating"/>
+
+<sub>📷 <b>Rohi is having bananas on the log 🍌 · 1:53 PM in Charlotte · fed 43 🍌 today</b> · the photo rotates with his real schedule, every 2 hours</sub>
 
 </div>
+<!-- ROHI:END -->
 
 <div align="center">
 
