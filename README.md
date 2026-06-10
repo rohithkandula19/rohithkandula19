@@ -192,12 +192,12 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <!-- STATUS:START -->
 | System | Status | Response |
 |---|---|---|
-| [RO MedRAG](https://romedrag.me) | 🟢 LIVE | 118 ms |
-| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 187 ms |
-| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 124 ms |
-| [RO Fraud Detection](https://rover-ai.duckdns.org) | 🟡 SLOW | 3746 ms |
+| [RO MedRAG](https://romedrag.me) | 🟢 LIVE | 137 ms |
+| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 329 ms |
+| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 259 ms |
+| [RO Fraud Detection](https://rover-ai.duckdns.org) | 🟢 LIVE | 296 ms |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-06-10 16:42 UTC</sub>
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-06-10 19:11 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
@@ -207,9 +207,9 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <!-- SHIPPED:START -->
 - **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-06-10 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
 - **[Ro-MedRag](https://github.com/rohithkandula19/Ro-MedRag)** · pushed 2026-06-10 · Production agentic RAG system for medical literature analysis. LangGraph + Claude Sonne…
-- **[ro-ai-recommendation-engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)** · pushed 2026-06-04
-- **[mr-bus-portal](https://github.com/rohithkandula19/mr-bus-portal)** · pushed 2026-06-04
-- **[Ro-Cortex](https://github.com/rohithkandula19/Ro-Cortex)** · pushed 2026-06-04
+- **[ro-ai-recommendation-engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)** · pushed 2026-06-04 · Netflix-style recommendation stack — two-tower PyTorch (BPR loss), FAISS IVFPQ candidat…
+- **[mr-bus-portal](https://github.com/rohithkandula19/mr-bus-portal)** · pushed 2026-06-04 · AI-powered interstate bus booking platform — route-aware RAG chatbot that can actually …
+- **[Ro-Cortex](https://github.com/rohithkandula19/Ro-Cortex)** · pushed 2026-06-04 · Clinical NLP for production — healthcare text processing pipeline.
 <!-- SHIPPED:END -->
 
 ---
