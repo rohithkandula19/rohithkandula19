@@ -5,11 +5,12 @@
 <img width="100%" src="Git.svg"/>
 
 <!-- TYPING ANIMATION — ALL 6 PROJECTS -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;RO+MedRAG+--+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+--+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+--+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+--+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+--+Enterprise+LangGraph+AI+on+AWS;MR+Buses+--+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;Ronin+--+Provider-Agnostic+AI+Coding+Agent+%28Claude-Code-style%2C+MIT%29;RO+MedRAG+--+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+--+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+--+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+--+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+--+Enterprise+LangGraph+AI+on+AWS;MR+Buses+--+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
 
 <br/>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rohith-kandula19/)
+[![Ronin](https://img.shields.io/badge/Ronin-Open_Source_Agent-7b2fff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rohithkandula19/Ronin)
 [![RO MedRAG](https://img.shields.io/badge/RO_MedRAG-Live-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
 [![BullshiftDetector](https://img.shields.io/badge/BullshiftDetector-Live-FF4444?style=for-the-badge&logo=googlechrome&logoColor=white)](https://bullshiftdetector.web.app)
 [![MR Buses](https://img.shields.io/badge/MR_Buses-Live-00FF88?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mrbusportal.com)
@@ -41,6 +42,31 @@ rohith = {
     "status"    : "Open to AI Engineer | GenAI | LLM | MLOps -- US",
 }
 ```
+
+---
+
+<div align="center"><h2>🗡️ OPEN SOURCE — RONIN</h2></div>
+
+### [Ronin — a masterless, provider-agnostic AI coding agent](https://github.com/rohithkandula19/Ronin)
+
+[![GitHub](https://img.shields.io/badge/GitHub-Ronin-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/Ronin)
+![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
+![Tests](https://img.shields.io/badge/tests-1%2C376_passing-brightgreen?style=flat-square)
+![Runs on](https://img.shields.io/badge/runs_on-Claude_or_free_models-d4a373?style=flat-square)
+
+A Claude-Code-style terminal agent that reads, edits, and runs your code -- every write behind a diff you approve. Built on a **provider-agnostic** framework, so the same agent runs on Claude for top quality or **free** on Gemini / Cerebras / Groq / Ollama (`--offline` strips every network tool for air-gapped coding). The multi-provider design unlocks things a single-vendor agent structurally can't:
+
+- **Consensus** -- run a task across several models in parallel; a judge synthesizes one cross-checked answer
+- **Dojo** -- rival models each attempt the same change in isolated git worktrees; a judge picks the best diff
+- **Kaizen** -- the agent finds a weakness in its *own* source, fixes it in a worktree, and keeps the diff only if the test suite passes
+
+```
+Python  ->  7-package monorepo  ->  1,376 offline tests  ->  MCP + 200 plugins
+```
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat-square&logo=anthropic&logoColor=white)
+![MCP](https://img.shields.io/badge/MCP-1C3C3C?style=flat-square)
 
 ---
 
@@ -235,7 +261,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=0:000000,50:130533,100:000000&height=150&section=footer&animation=fadeIn"/>
 
-[![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula)
-[![Portfolio](https://img.shields.io/badge/See_My_Work-romedrag.me-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
+[![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula19)
+[![Portfolio](https://img.shields.io/badge/Portfolio-rohithkandula.com-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.rohithkandula.com)
 
 </div>
