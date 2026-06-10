@@ -22,7 +22,7 @@ USER = "rohithkandula19"
 README = os.path.join(os.path.dirname(__file__), "..", "README.md")
 
 SCENES = {
-    "sleeping": "fast asleep on his branch — belly full, uncle mode 💤",
+    "sleeping": "fast asleep, belly full, uncle mode 💤",
     "eating": "having bananas on the log 🍌",
     "playing": "swinging through the canopy",
     "fighting": "play-wrestling his cousin 🥊",
@@ -83,7 +83,7 @@ def main():
 
     caption = f"Rohi is {SCENES[act]} · {now.strftime('%-I:%M %p')} in Charlotte"
     if fed is not None:
-        caption += f" · fed {fed} 🍌 today" if fed else " · hungry — a git push feeds him 🍌"
+        caption += f" · fed {fed} 🍌 today" if fed else " · hungry, somebody push some code 🍌"
 
     block = f"""
 <div align="center">

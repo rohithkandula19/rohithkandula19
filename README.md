@@ -46,9 +46,9 @@ rohith = {
 
 ---
 
-<div align="center"><h2>🗡️ OPEN SOURCE — RONIN</h2></div>
+<div align="center"><h2>🗡️ OPEN SOURCE: RONIN</h2></div>
 
-### [Ronin — a masterless, provider-agnostic AI coding agent](https://github.com/rohithkandula19/Ronin)
+### [Ronin: a masterless, provider-agnostic AI coding agent](https://github.com/rohithkandula19/Ronin)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Ronin-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/Ronin)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
@@ -185,7 +185,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 ---
 
 <div align="center"><h2>🛰️ LIVE STATUS</h2>
-<p><i>"All live" isn't a slogan — a GitHub Action pings every deployment and rewrites this table. Receipts, not vibes.</i></p></div>
+<p><i>"All live" isn't a slogan. A GitHub Action pings every deployment and rewrites this table. Receipts, not vibes.</i></p></div>
 
 <div align="center">
 
@@ -197,7 +197,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 | [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 124 ms |
 | [RO Fraud Detection](https://rover-ai.duckdns.org) | 🟡 SLOW | 3746 ms |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions — last run 2026-06-10 16:42 UTC</sub>
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-06-10 16:42 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
@@ -205,8 +205,8 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <div align="center"><h3>⚡ Recently shipped</h3></div>
 
 <!-- SHIPPED:START -->
-- **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-06-10 — Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
-- **[Ro-MedRag](https://github.com/rohithkandula19/Ro-MedRag)** · pushed 2026-06-10 — Production agentic RAG system for medical literature analysis. LangGraph + Claude Sonne…
+- **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-06-10 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
+- **[Ro-MedRag](https://github.com/rohithkandula19/Ro-MedRag)** · pushed 2026-06-10 · Production agentic RAG system for medical literature analysis. LangGraph + Claude Sonne…
 - **[ro-ai-recommendation-engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)** · pushed 2026-06-04
 - **[mr-bus-portal](https://github.com/rohithkandula19/mr-bus-portal)** · pushed 2026-06-04
 - **[Ro-Cortex](https://github.com/rohithkandula19/Ro-Cortex)** · pushed 2026-06-04
@@ -291,7 +291,7 @@ flowchart LR
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=rohithkandula19&theme=tokyo-night&bg_color=0D1117&color=7b2fff&line=00D9FF&point=c8a2ff&area=true&hide_border=true" width="100%"/>
 
-<img src="profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3D contribution graph — regenerated daily by GitHub Actions"/>
+<img src="profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3D contribution graph, regenerated daily by GitHub Actions"/>
 
 </div>
 
@@ -302,7 +302,7 @@ flowchart LR
 
 <div align="center">
 
-**🐒 Meet Rohi — the resident monkey.** Not a cartoon — Rohi is **AI-photographed in the wild** (Higgsfield, character-consistent across scenes), and he lives here in real time on Charlotte hours: bananas for breakfast and lunch, canopy-swinging in the morning, **play-wrestling his cousin** in the afternoon, and after dinner he sleeps **belly-up like an uncle** under the fireflies. **Your commits are his food** — every push feeds him.
+**🐒 Meet Rohi, the resident monkey.** He lives here in real time on Charlotte hours: bananas for breakfast and lunch, swinging through the canopy in the morning, **play-wrestling his cousin** in the afternoon, and after a big dinner he sleeps **belly-up like an uncle** under the fireflies. **Your commits are his food.** Every push feeds him, and the scene updates every 2 hours to whatever he is doing right now.
 
 <!-- ROHI:START -->
 <div align="center">
@@ -318,7 +318,7 @@ flowchart LR
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="dist/pacman-contribution-graph-dark.svg">
-  <img src="dist/pacman-contribution-graph.svg" width="100%" alt="Pac-Man eating my contribution graph — regenerated daily"/>
+  <img src="dist/pacman-contribution-graph.svg" width="100%" alt="Pac-Man eating my contribution graph, regenerated daily"/>
 </picture>
 
 
@@ -351,6 +351,6 @@ flowchart LR
 [![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula19)
 [![Portfolio](https://img.shields.io/badge/Portfolio-rohithkandula.com-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.rohithkandula.com)
 
-<sub>🤖 The portfolio has an AI narrator and an "Ask Rohith" chat — and it rewrites itself depending on whether you're a recruiter, an engineer, or just curious. Go say hi.</sub>
+<sub>🤖 The portfolio has an AI narrator and an "Ask Rohith" chat, and it rewrites itself depending on whether you're a recruiter, an engineer, or just curious. Go say hi.</sub>
 
 </div>

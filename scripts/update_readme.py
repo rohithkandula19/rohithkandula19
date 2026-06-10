@@ -54,7 +54,7 @@ def status_table() -> str:
         rows.append(f"| [{name}]({url}) | {badge} | {latency} |")
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     rows.append("")
-    rows.append(f"<sub>🤖 Checked automatically every 6 hours by GitHub Actions — last run {stamp}</sub>")
+    rows.append(f"<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run {stamp}</sub>")
     return "\n".join(rows)
 
 
@@ -68,7 +68,7 @@ def shipped_list() -> str:
         desc = (r.get("description") or "").strip()
         if len(desc) > 90:
             desc = desc[:87] + "…"
-        suffix = f" — {desc}" if desc else ""
+        suffix = f" · {desc}" if desc else ""
         lines.append(f"- **[{r['name']}]({r['html_url']})** · pushed {pushed}{suffix}")
         if len(lines) == 5:
             break
