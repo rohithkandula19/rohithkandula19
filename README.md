@@ -309,7 +309,7 @@ flowchart LR
 
 <img src="assets/rohi/eating.jpg" width="100%" alt="Rohi the capuchin monkey, currently eating"/>
 
-<sub>📷 <b>Rohi is having bananas on the log 🍌 · 1:53 PM in Charlotte · fed 43 🍌 today</b> · the photo rotates with his real schedule, every 2 hours</sub>
+<sub>📷 <b>Rohi is having bananas on the log 🍌 · 1:54 PM in Charlotte · fed 44 🍌 today</b> · the photo rotates with his real schedule, every 2 hours</sub>
 
 </div>
 <!-- ROHI:END -->
