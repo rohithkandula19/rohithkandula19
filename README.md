@@ -300,28 +300,13 @@ flowchart LR
 <div align="center"><h2>🕹️ THE ARCADE</h2>
 <p><i>This profile is playable. Yes, really.</i></p></div>
 
-<!-- CONNECT4:START -->
 <div align="center">
 
-**🔴 Connect 4 — you vs my bot.** You're **Red**, the bot is **Yellow**. One click = one move: pick a column below → a pre-filled GitHub issue opens → press *Create* → a GitHub Action drops your disc, the bot replies, and this board re-renders.
+**🐒 Meet Mojo — the resident monkey.** He lives here, in real time: asleep at night (Charlotte time), bananas at dawn and noon, canopy-swinging in the morning, zoomies all afternoon, juggling at dusk. **Your commits are his food** — every push feeds him. The scene below re-renders every 2 hours to whatever he's actually doing right now.
 
-<img src="games/connect4/board.svg" width="320" alt="connect 4 board"/>
-
-**Drop your disc:**&nbsp;&nbsp;[1️⃣](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cdrop%7C1&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)  [2️⃣](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cdrop%7C2&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)  [3️⃣](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cdrop%7C3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)  [4️⃣](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cdrop%7C4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)  [5️⃣](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cdrop%7C5&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)  [6️⃣](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cdrop%7C6&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)  [7️⃣](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cdrop%7C7&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)
-
-
-
-<details><summary>Recent moves</summary>
-
-<sub>🔴 column 4 — @rohithkandula19</sub>  
-<sub>🟡 column 2 — bot</sub>
-
-</details>
-
-<sub>[🔄 Start a new game](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=c4%7Cnew&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · played entirely with GitHub issues + Actions</sub>
+<img src="dist/monkey-life.svg" width="100%" alt="Mojo the monkey living his life — sky, activity, and banana count update every 2 hours"/>
 
 </div>
-<!-- CONNECT4:END -->
 
 <div align="center">
 
