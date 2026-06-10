@@ -297,6 +297,43 @@ flowchart LR
 
 ---
 
+<div align="center"><h2>🕹️ THE ARCADE</h2>
+<p><i>This profile is playable. Yes, really.</i></p></div>
+
+<!-- CHESS:START -->
+<div align="center">
+
+**♟️ Play chess against my profile.** You (the internet) are **White**; a Stockfish bot is **Black**.
+Click a move → a pre-filled GitHub issue opens → press *Create* → a GitHub Action plays it, gets Stockfish's reply, and re-renders this board.
+
+<img src="games/chess/board.svg" width="420" alt="chess board"/>
+
+
+
+**Your move:** [`Na3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7CNa3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`Nc3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7CNc3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`Nf3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7CNf3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`Nh3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7CNh3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`a3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Ca3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`a4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Ca4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`b3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cb3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`b4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cb4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`c3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cc3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`c4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cc4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`d3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cd3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`d4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cd4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`e3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Ce3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`e4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Ce4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`f3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cf3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`f4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cf4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`g3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cg3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`g4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Cg4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`h3`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Ch3&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.) · [`h4`](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cmove%7Ch4&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)
+
+<details><summary>Recent moves</summary>
+
+<sub>No moves yet — make the first one!</sub>
+
+</details>
+
+<sub>Any legal move works: open an issue titled <code>chess|move|&lt;SAN&gt;</code> (e.g. <code>chess|move|Nf3</code>) · [Start a new game](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=chess%7Cnew&body=Just%20press%20%27Create%27%20%E2%80%94%20the%20bot%20does%20the%20rest.)</sub>
+
+</div>
+<!-- CHESS:END -->
+
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dist/pacman-contribution-graph-dark.svg">
+  <img src="dist/pacman-contribution-graph.svg" width="100%" alt="Pac-Man eating my contribution graph — regenerated daily"/>
+</picture>
+
+</div>
+
+---
+
 <div align="center"><h2>🏆 CREDENTIALS</h2></div>
 
 <div align="center">

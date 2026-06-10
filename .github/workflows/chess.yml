@@ -1,0 +1,43 @@
+name: Chess
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: chess
+  cancel-in-progress: false
+
+jobs:
+  move:
+    if: startsWith(github.event.issue.title, 'chess|')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Stockfish + python-chess
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq stockfish
+          python3 -m pip install --quiet python-chess
+      - name: Play move
+        env:
+          # passed via env, never interpolated into shell — issue titles are untrusted
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: python3 scripts/chess_move.py
+      - name: Commit board
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md games/chess
+          git diff --cached --quiet || { git commit -m "chess: move via issue #${{ github.event.issue.number }} [skip ci]"; git pull --rebase origin main; git push; }
+      - name: Reply and close issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} --body-file games/chess/comment.txt
+          gh issue close ${{ github.event.issue.number }} --repo ${{ github.repository }}
