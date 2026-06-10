@@ -302,9 +302,9 @@ flowchart LR
 
 <div align="center">
 
-**🐒 Meet Mojo — the resident monkey.** He lives here, in real time: asleep at night (Charlotte time), bananas at dawn and noon, canopy-swinging in the morning, zoomies all afternoon, juggling at dusk. **Your commits are his food** — every push feeds him. The scene below re-renders every 2 hours to whatever he's actually doing right now.
+**🐒 Meet Rohi — the resident monkey.** Hand-drawn, no emoji — and he lives here in real time: asleep under the stars at night (Charlotte time), bananas at dawn and noon, canopy-swinging in the morning, zoomies all afternoon, juggling at dusk. **Your commits are his food** — every push feeds him. The scene re-renders every 2 hours to whatever he's actually doing right now.
 
-<img src="dist/monkey-life.svg" width="100%" alt="Mojo the monkey living his life — sky, activity, and banana count update every 2 hours"/>
+<img src="dist/monkey-life.svg" width="100%" alt="Rohi the monkey living his life — sky, activity, and banana count update every 2 hours"/>
 
 </div>
 
