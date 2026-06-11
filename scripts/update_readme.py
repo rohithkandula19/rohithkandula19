@@ -34,7 +34,7 @@ def ping(url: str) -> tuple[str, str]:
                 return badge, f"{ms} ms"
             return "🔴 DOWN", f"HTTP {resp.status}"
     except Exception:
-        return "🔴 DOWN", "—"
+        return "🔴 DOWN", "n/a"
 
 
 def gh_api(path: str):
@@ -65,7 +65,7 @@ def shipped_list() -> str:
         if r.get("fork") or r["name"] == USER:
             continue
         pushed = r["pushed_at"][:10]
-        desc = (r.get("description") or "").strip()
+        desc = (r.get("description") or "").strip().replace("\u2014", "\u00b7")
         if len(desc) > 90:
             desc = desc[:87] + "…"
         suffix = f" · {desc}" if desc else ""

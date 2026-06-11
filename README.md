@@ -3,7 +3,7 @@
 <!-- UNIVERSE MOVING BACKGROUND -->
 <img width="100%" src="Git.svg"/>
 
-<!-- TYPING ANIMATION — ALL 6 PROJECTS -->
+<!-- TYPING ANIMATION · ALL 6 PROJECTS -->
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;Ronin+%C2%B7+Provider-Agnostic+AI+Coding+Agent+%28Claude-Code-style%2C+MIT%29;RO+MedRAG+%C2%B7+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+%C2%B7+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+%C2%B7+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+%C2%B7+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+%C2%B7+Enterprise+LangGraph+AI+on+AWS;MR+Buses+%C2%B7+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
 
 <br/>
@@ -206,9 +206,9 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <!-- SHIPPED:START -->
 - **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-06-10 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
 - **[Ro-MedRag](https://github.com/rohithkandula19/Ro-MedRag)** · pushed 2026-06-10 · Production agentic RAG system for medical literature analysis. LangGraph + Claude Sonne…
-- **[ro-ai-recommendation-engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)** · pushed 2026-06-04 · Netflix-style recommendation stack — two-tower PyTorch (BPR loss), FAISS IVFPQ candidat…
-- **[mr-bus-portal](https://github.com/rohithkandula19/mr-bus-portal)** · pushed 2026-06-04 · AI-powered interstate bus booking platform — route-aware RAG chatbot that can actually …
-- **[Ro-Cortex](https://github.com/rohithkandula19/Ro-Cortex)** · pushed 2026-06-04 · Clinical NLP for production — healthcare text processing pipeline.
+- **[ro-ai-recommendation-engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)** · pushed 2026-06-04 · Netflix-style recommendation stack · two-tower PyTorch (BPR loss), FAISS IVFPQ candidat…
+- **[mr-bus-portal](https://github.com/rohithkandula19/mr-bus-portal)** · pushed 2026-06-04 · AI-powered interstate bus booking platform · route-aware RAG chatbot that can actually …
+- **[Ro-Cortex](https://github.com/rohithkandula19/Ro-Cortex)** · pushed 2026-06-04 · Clinical NLP for production · healthcare text processing pipeline.
 <!-- SHIPPED:END -->
 
 ---
