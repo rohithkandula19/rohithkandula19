@@ -1,11 +1,10 @@
-> **⚠️ All Rights Reserved.** This repository is published for viewing and portfolio purposes only. The code is **not** open source — reuse, redistribution, modification, or derivative works are not permitted without written permission. See [LICENSE](./LICENSE).
 <div align="center">
 
 <!-- UNIVERSE MOVING BACKGROUND -->
 <img width="100%" src="Git.svg"/>
 
 <!-- TYPING ANIMATION — ALL 6 PROJECTS -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;Ronin+--+Provider-Agnostic+AI+Coding+Agent+%28Claude-Code-style%2C+MIT%29;RO+MedRAG+--+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+--+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+--+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+--+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+--+Enterprise+LangGraph+AI+on+AWS;MR+Buses+--+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;Ronin+%C2%B7+Provider-Agnostic+AI+Coding+Agent+%28Claude-Code-style%2C+MIT%29;RO+MedRAG+%C2%B7+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+%C2%B7+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+%C2%B7+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+%C2%B7+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+%C2%B7+Enterprise+LangGraph+AI+on+AWS;MR+Buses+%C2%B7+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
 
 <br/>
 
@@ -338,3 +337,5 @@ flowchart LR
 <sub>🤖 The portfolio has an AI narrator and an "Ask Rohith" chat, and it rewrites itself depending on whether you're a recruiter, an engineer, or just curious. Go say hi.</sub>
 
 </div>
+
+<sub>⚠️ All rights reserved. Published for viewing and portfolio purposes; reuse or redistribution needs written permission. See <a href="./LICENSE">LICENSE</a>.</sub>

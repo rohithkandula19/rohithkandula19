@@ -160,7 +160,7 @@
   <text x="720" y="130" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#c8a2ff" text-anchor="middle" filter="url(#glow)">Rohith Kandula</text>
 
   <!-- Subtitle -->
-  <text x="720" y="175" font-family="Georgia, serif" font-size="20" fill="#00D9FF" text-anchor="middle" opacity="0.9">I don't just fine-tune models -- I ship them.</text>
+  <text x="720" y="175" font-family="Georgia, serif" font-size="20" fill="#00D9FF" text-anchor="middle" opacity="0.9">I don't just fine-tune models. I ship them.</text>
 
   <!-- Bottom tagline -->
   <text x="720" y="225" font-family="monospace" font-size="13" fill="#c8a2ff" text-anchor="middle" opacity="0.6">LLM  ·  RAG  ·  LangGraph  ·  PyTorch  ·  GCP  ·  AWS  ·  Agentic AI</text>
