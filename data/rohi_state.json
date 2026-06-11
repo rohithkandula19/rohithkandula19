@@ -1,19 +1,19 @@
 {
   "schema": 1,
   "activity": "sleeping",
-  "hunger": 70,
+  "hunger": 100,
   "energy": 100,
   "happiness": 60,
-  "xp": 0,
-  "level": 1,
-  "bananas_today": 0,
-  "bananas_total": 0,
+  "xp": 98,
+  "level": 2,
+  "bananas_today": 49,
+  "bananas_total": 49,
   "wins": 0,
   "losses": 0,
   "races_won": 0,
   "dances": 0,
   "pets": 0,
   "recent_players": [],
-  "last_tick_utc": "2026-06-11T02:30:02+00:00",
-  "updated_utc": "2026-06-11T02:30:02+00:00"
+  "last_tick_utc": "2026-06-11T02:30:25+00:00",
+  "updated_utc": "2026-06-11T02:30:25+00:00"
 }
