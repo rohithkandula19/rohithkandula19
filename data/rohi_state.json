@@ -1,19 +1,24 @@
 {
   "schema": 1,
-  "activity": "sleeping",
+  "activity": "dancing",
   "hunger": 100,
   "energy": 100,
-  "happiness": 60,
-  "xp": 108,
+  "happiness": 70,
+  "xp": 123,
   "level": 2,
   "bananas_today": 49,
   "bananas_total": 50,
   "wins": 0,
   "losses": 0,
   "races_won": 0,
-  "dances": 0,
+  "dances": 1,
   "pets": 0,
   "recent_players": [
+    {
+      "user": "rohithkandula19",
+      "action": "dance",
+      "at": "2026-06-11T02:46:01+00:00"
+    },
     {
       "user": "rohithkandula19",
       "action": "feed",
@@ -21,5 +26,5 @@
     }
   ],
   "last_tick_utc": "2026-06-11T02:30:25+00:00",
-  "updated_utc": "2026-06-11T02:31:05+00:00"
+  "updated_utc": "2026-06-11T02:46:01+00:00"
 }

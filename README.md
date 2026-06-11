@@ -307,13 +307,13 @@ flowchart LR
 <!-- ROHI:START -->
 <div align="center">
 
-<img src="assets/rohi/rohi.svg?v=1781145065" width="100%" alt="Rohi the capuchin monkey, currently sleeping"/>
+<img src="assets/rohi/rohi.svg?v=1781145961" width="100%" alt="Rohi the capuchin monkey, currently dancing"/>
 
-<sub>🎮 <b>Rohi is fast asleep, belly full, uncle mode 💤 · 10:31 PM in Charlotte · fed 49 🍌 today · LVL 2 · 108 XP</b></sub>
+<sub>🎮 <b>Rohi is busting tail-spin moves under the fireflies 🕺 · 10:46 PM in Charlotte · fed 49 🍌 today · LVL 2 · 123 XP</b></sub>
 
 [![🍌 Feed](https://img.shields.io/badge/%F0%9F%8D%8C%20Feed-ffd54f?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Afeed&body=Click+%22Submit+new+issue%22+and+Rohi+gets+a+banana.+The+scene+updates+in+~30s.) [![🕺 Dance](https://img.shields.io/badge/%F0%9F%95%BA%20Dance-e040fb?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Adance&body=Click+%22Submit+new+issue%22+and+Rohi+busts+a+move+for+you.+The+scene+updates+in+~30s.) [![🤼 Wrestle](https://img.shields.io/badge/%F0%9F%A4%BC%20Wrestle-ef5350?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Awrestle&body=Click+%22Submit+new+issue%22+to+challenge+Rohi+in+the+canopy+ring.+The+scene+updates+in+~30s.) [![🏃 Race](https://img.shields.io/badge/%F0%9F%8F%83%20Race-42a5f5?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Arace&body=Click+%22Submit+new+issue%22+to+race+Rohi+through+the+treetops.+The+scene+updates+in+~30s.) [![❤️ Pet](https://img.shields.io/badge/%E2%9D%A4%EF%B8%8F%20Pet-ec407a?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Apet&body=Click+%22Submit+new+issue%22+to+give+Rohi+head+pats.+The+scene+updates+in+~30s.)
 
-<sub>Recent playmates: @rohithkandula19 (feed)</sub>
+<sub>Recent playmates: @rohithkandula19 (dance) · @rohithkandula19 (feed)</sub>
 
 </div>
 <!-- ROHI:END -->
