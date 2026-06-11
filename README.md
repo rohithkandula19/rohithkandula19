@@ -307,9 +307,9 @@ flowchart LR
 <!-- ROHI:START -->
 <div align="center">
 
-<img src="assets/rohi/live/rohi-1781146396.svg" width="100%" alt="Rohi the capuchin monkey, currently dancing"/>
+<img src="assets/rohi/live/rohi-1781147390.svg" width="100%" alt="Rohi the capuchin monkey, currently dancing"/>
 
-<sub>🎮 <b>Rohi is busting tail-spin moves under the fireflies 🕺 · 10:53 PM in Charlotte · fed 49 🍌 today · LVL 2 · 123 XP</b></sub>
+<sub>🎮 <b>Rohi is busting tail-spin moves under the fireflies 🕺 · 11:09 PM in Charlotte · fed 54 🍌 today · LVL 2 · 133 XP</b></sub>
 
 [![🍌 Feed](https://img.shields.io/badge/%F0%9F%8D%8C%20Feed-ffd54f?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Afeed&body=Click+%22Submit+new+issue%22+and+Rohi+gets+a+banana.+Give+it+~30s%2C+then+refresh+the+profile+to+watch+him+react.+He+stays+in+the+mood+for+an+hour.) [![🕺 Dance](https://img.shields.io/badge/%F0%9F%95%BA%20Dance-e040fb?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Adance&body=Click+%22Submit+new+issue%22+and+Rohi+busts+a+move+for+you.+Give+it+~30s%2C+then+refresh+the+profile+to+watch+him+react.+He+stays+in+the+mood+for+an+hour.) [![🤼 Wrestle](https://img.shields.io/badge/%F0%9F%A4%BC%20Wrestle-ef5350?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Awrestle&body=Click+%22Submit+new+issue%22+to+challenge+Rohi+in+the+canopy+ring.+Give+it+~30s%2C+then+refresh+the+profile+to+watch+him+react.+He+stays+in+the+mood+for+an+hour.) [![🏃 Race](https://img.shields.io/badge/%F0%9F%8F%83%20Race-42a5f5?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Arace&body=Click+%22Submit+new+issue%22+to+race+Rohi+through+the+treetops.+Give+it+~30s%2C+then+refresh+the+profile+to+watch+him+react.+He+stays+in+the+mood+for+an+hour.) [![❤️ Pet](https://img.shields.io/badge/%E2%9D%A4%EF%B8%8F%20Pet-ec407a?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Apet&body=Click+%22Submit+new+issue%22+to+give+Rohi+head+pats.+Give+it+~30s%2C+then+refresh+the+profile+to+watch+him+react.+He+stays+in+the+mood+for+an+hour.)
 
