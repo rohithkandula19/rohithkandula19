@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Rohi sprite renderer — draws the whole game scene as ONE animated SVG.
+"""Rohi photo-composite renderer — cinematic photo + game HUD as ONE animated SVG.
+
+The scene is one of the user's photos of Rohi, base64-embedded (GitHub's SVG
+sanitizer blocks external refs), with a slow Ken Burns zoom/pan, per-activity
+animated overlay effects, and a translucent game HUD composited on top.
 
 Stdlib only. Safe for GitHub README <img> embedding:
   * no JavaScript, no external resources, system font stack only
-  * all animation is CSS @keyframes inside a <style> element, looping forever
+  * animation is CSS @keyframes in <style> plus SMIL <animate>, looping forever
 
 Usage:
     python3 scripts/rohi_game/render_rohi.py --state data/rohi_state.json \
@@ -17,59 +21,43 @@ Env:
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import math
 import os
+import struct
 import sys
 from datetime import datetime
 from xml.sax.saxutils import escape
 from zoneinfo import ZoneInfo
 
 TZ = ZoneInfo("America/New_York")
-W, H = 900, 320
+ASSET_DIR = os.path.normpath(os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets", "rohi"))
 
 ACTIVITIES = ("eating", "sleeping", "dancing", "running", "playing", "fighting", "idle")
 
-# ----------------------------------------------------------------------------
-# palette / colours
-# ----------------------------------------------------------------------------
+# activity -> ordered photo candidates (first existing .jpg wins)
+PHOTO_CHAIN = {
+    "eating": ("eating",),
+    "sleeping": ("sleeping",),
+    "playing": ("playing",),
+    "fighting": ("fighting",),
+    "dancing": ("dancing", "playing"),
+    "running": ("running", "playing"),
+    "idle": ("idle", "sleeping"),
+}
+GLOBAL_FALLBACK = ("playing", "sleeping", "eating", "fighting")
 
-BODY = "#4a2f1e"      # capuchin dark brown body
-BODY_D = "#36210f"    # darker (feet, hands, shading)
-CREAM = "#f4e3c2"     # cream chest
-FACE = "#f7ead0"      # cream face
-MUZZLE = "#e9d3ac"
-INK = "#2a1a10"       # pupils / line work
-COUSIN = "#3b2516"    # cousin is a darker, bigger fellow
-COUSIN_CREAM = "#e6d2ae"
-BANANA = "#ffd54a"
-BANANA_EDGE = "#c79a2a"
-
-PALETTES = {
-    "day": {
-        "sky": ("#5fb2ef", "#a8dcf7", "#e7f6e0"),
-        "celestial": "sun",
-        "canopy1": "#2e7d4f", "canopy2": "#3e9d5f", "canopy3": "#57b86b",
-        "ground": "#4d8f4a", "ground2": "#3f7a3e",
-        "log": "#6c4a2f", "log2": "#7d5a3a", "moss": "#5aa45a",
-        "stars": False, "fireflies": False,
-    },
-    "dusk": {
-        "sky": ("#5b3a78", "#d8623f", "#ffb347"),
-        "celestial": "dusksun",
-        "canopy1": "#1f5e3e", "canopy2": "#2c724a", "canopy3": "#3f8f58",
-        "ground": "#3f6e3c", "ground2": "#345c32",
-        "log": "#5d3f29", "log2": "#6d4e33", "moss": "#4c8c4c",
-        "stars": False, "fireflies": False,
-    },
-    "night": {
-        "sky": ("#070d2c", "#14204e", "#23355f"),
-        "celestial": "moon",
-        "canopy1": "#0f3826", "canopy2": "#174530", "canopy3": "#1f5a3c",
-        "ground": "#1d3d22", "ground2": "#16301b",
-        "log": "#4a3322", "log2": "#57402c", "moss": "#2f6b3f",
-        "stars": True, "fireflies": True,
-    },
+# activity -> (zoom_to, pan_x, pan_y, duration_s) — slow documentary drift
+KEN_BURNS = {
+    "eating": (1.14, -40, -18, 22),
+    "sleeping": (1.10, 30, -10, 28),
+    "playing": (1.16, -55, -8, 20),
+    "fighting": (1.15, 45, -15, 18),
+    "dancing": (1.18, -30, -22, 19),
+    "running": (1.16, 60, -10, 18),
+    "idle": (1.10, 25, -12, 26),
 }
 
 CAPTIONS = {
@@ -84,6 +72,10 @@ CAPTIONS = {
 
 FONT = "'Segoe UI',Helvetica,Arial,sans-serif"
 FAM = FONT.replace("'", "&apos;")  # XML-safe form for font-family attributes
+PANEL = 'fill="#0d1117" fill-opacity="0.72"'  # rgba(13,17,23,0.72)
+BANANA = "#ffd54a"
+BANANA_EDGE = "#c79a2a"
+REF_W = 900.0  # HUD design-space width; the HUD group is scaled to the photo
 
 # ----------------------------------------------------------------------------
 # tiny helpers
@@ -102,12 +94,6 @@ def kf(name: str, stops) -> str:
     return "@keyframes " + name + "{" + inner + "}"
 
 
-def rot(cx, cy, deg, pre="") -> str:
-    """Transform decl: rotate `deg` about local point (cx, cy)."""
-    return (f"transform:{pre}translate({n(cx)}px,{n(cy)}px) rotate({n(deg)}deg) "
-            f"translate({n(-cx)}px,{n(-cy)}px);")
-
-
 def scale_at(cx, cy, sx, sy, pre="") -> str:
     return (f"transform:{pre}translate({n(cx)}px,{n(cy)}px) scale({n(sx)},{n(sy)}) "
             f"translate({n(-cx)}px,{n(-cy)}px);")
@@ -115,16 +101,6 @@ def scale_at(cx, cy, sx, sy, pre="") -> str:
 
 def circle(cx, cy, r, fill, extra="") -> str:
     return f'<circle cx="{n(cx)}" cy="{n(cy)}" r="{n(r)}" fill="{fill}" {extra}/>'
-
-
-def ellipse(cx, cy, rx, ry, fill, extra="") -> str:
-    return (f'<ellipse cx="{n(cx)}" cy="{n(cy)}" rx="{n(rx)}" ry="{n(ry)}" '
-            f'fill="{fill}" {extra}/>')
-
-
-def limb(d, w=8, color=BODY, extra="") -> str:
-    return (f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{n(w)}" '
-            f'stroke-linecap="round" {extra}/>')
 
 
 def star_path(cx, cy, points, r1, r2, rot_deg=0.0) -> str:
@@ -136,6 +112,21 @@ def star_path(cx, cy, points, r1, r2, rot_deg=0.0) -> str:
     return "M" + " L".join(pts) + " Z"
 
 
+def banana_svg(cx, cy, deg=0, s=1.0) -> str:
+    d = "M-12,0 Q0,13 12,0 Q13,-2 11,-1 Q5,6 0,6 Q-5,6 -11,-1 Q-13,-2 -12,0 Z"
+    return (f'<g transform="translate({n(cx)},{n(cy)}) rotate({n(deg)}) scale({n(s)})">'
+            f'<path d="{d}" fill="{BANANA}" stroke="{BANANA_EDGE}" stroke-width="0.8"/>'
+            f'{circle(-12, 0, 1.3, "#7a5a1e")}{circle(12, 0, 1.3, "#7a5a1e")}</g>')
+
+
+def note_svg(x, y, s=1.0, color="#ffe9a8") -> str:
+    return (f'<g transform="translate({n(x)},{n(y)}) scale({n(s)})">'
+            f'<ellipse cx="0" cy="0" rx="4.4" ry="3.1" fill="{color}" '
+            f'transform="rotate(-20)"/>'
+            f'<path d="M3.8,-1 V-19 q6,1 8,6" fill="none" stroke="{color}" '
+            f'stroke-width="2" stroke-linecap="round"/></g>')
+
+
 def _lcg(seed: int):
     x = seed & 0x7FFFFFFF
     while True:
@@ -144,7 +135,7 @@ def _lcg(seed: int):
 
 
 # ----------------------------------------------------------------------------
-# state / time
+# state / time / photo discovery
 # ----------------------------------------------------------------------------
 
 DEFAULT_STATE = {
@@ -183,651 +174,268 @@ def now_charlotte() -> datetime:
     return datetime.now(TZ)
 
 
-def sky_phase(dt: datetime) -> str:
-    h = dt.hour
-    if 6 <= h < 19:
-        return "day"
-    if 19 <= h < 21:
-        return "dusk"
-    return "night"
+def find_photo(activity: str):
+    """First existing .jpg from the activity's chain (then a global fallback)."""
+    seen = set()
+    for name in PHOTO_CHAIN[activity] + GLOBAL_FALLBACK:
+        if name in seen:
+            continue
+        seen.add(name)
+        path = os.path.join(ASSET_DIR, f"{name}.jpg")
+        if os.path.isfile(path):
+            return path, f"{name}.jpg"
+    raise SystemExit(f"render_rohi: no photo available for {activity!r} in {ASSET_DIR}")
+
+
+def jpeg_size(path):
+    """Read width/height from JPEG headers (no deps)."""
+    with open(path, "rb") as f:
+        data = f.read()
+    i = 2
+    while i < len(data):
+        if data[i] != 0xFF:
+            i += 1
+            continue
+        marker = data[i + 1]
+        if 0xC0 <= marker <= 0xCF and marker not in (0xC4, 0xC8, 0xCC):
+            h, w = struct.unpack(">HH", data[i + 5: i + 9])
+            return w, h
+        i += 2 + struct.unpack(">H", data[i + 2: i + 4])[0]
+    raise ValueError(f"no SOF marker in {path}")
 
 
 # ----------------------------------------------------------------------------
-# shared monkey parts (drawn in a local frame; caller wraps in translate())
+# Ken Burns photo layer (SMIL, ported from build_rohi_motion.py)
 # ----------------------------------------------------------------------------
 
 
-def head_svg(cx, cy, s=1.0, eyes="open", mouth="smile", brows=False,
-             eye_cls="", mouth_cls="", cheek_cls="", body=BODY, face=FACE,
-             muzzle=MUZZLE, look=0.0) -> str:
-    """A capuchin head: dark cap, cream face, big eyes. `look` shifts features x."""
-    o = []
-    # ears
-    for sx in (-1, 1):
-        o.append(circle(cx + sx * 19 * s, cy - 1 * s, 7.5 * s, body))
-        o.append(circle(cx + sx * 19 * s, cy - 1 * s, 3.8 * s, muzzle))
-    # skull (dark cap shows above the cream face)
-    o.append(circle(cx, cy, 20 * s, body))
-    # cream face
-    o.append(ellipse(cx + look * s, cy + 4 * s, 15.5 * s, 14 * s, face))
-    # cheek puff (eating)
-    if cheek_cls:
-        o.append(ellipse(cx + (look + 9) * s, cy + 8 * s, 6 * s, 5 * s, MUZZLE,
-                         f'class="{cheek_cls}"'))
-    # muzzle
-    o.append(ellipse(cx + look * s, cy + 9.5 * s, 8.5 * s, 6.5 * s, muzzle))
-    o.append(circle(cx + (look - 2) * s, cy + 7.5 * s, 0.9 * s, INK))
-    o.append(circle(cx + (look + 2) * s, cy + 7.5 * s, 0.9 * s, INK))
-    # eyes
-    ex, ey = 6.7 * s, cy + 0.5 * s
-    e = [f'<g class="{eye_cls}">' if eye_cls else "<g>"]
-    if eyes == "open":
-        for sx in (-1, 1):
-            x = cx + look * s + sx * ex
-            e.append(circle(x, ey, 4.4 * s, "#fff"))
-            e.append(circle(x + 0.8 * s, ey + 0.5 * s, 2.5 * s, INK))
-            e.append(circle(x + 1.7 * s, ey - 0.5 * s, 0.9 * s, "#fff"))
-    elif eyes == "happy":
-        for sx in (-1, 1):
-            x = cx + look * s + sx * ex
-            e.append(limb(f"M{n(x - 3.4 * s)},{n(ey + 1.2 * s)} "
-                          f"Q{n(x)},{n(ey - 3.6 * s)} {n(x + 3.4 * s)},{n(ey + 1.2 * s)}",
-                          1.8 * s, INK))
-    else:  # closed
-        for sx in (-1, 1):
-            x = cx + look * s + sx * ex
-            e.append(limb(f"M{n(x - 3.4 * s)},{n(ey - 0.6 * s)} "
-                          f"Q{n(x)},{n(ey + 3)} {n(x + 3.4 * s)},{n(ey - 0.6 * s)}",
-                          1.8 * s, INK))
-    e.append("</g>")
-    o.extend(e)
-    if brows:
-        for sx in (-1, 1):
-            x = cx + look * s + sx * ex
-            o.append(limb(f"M{n(x - 3.5 * s)},{n(ey - (7 - sx) * s)} "
-                          f"L{n(x + 3.5 * s)},{n(ey - (7 + sx) * s)}", 2 * s, INK))
-    # mouth
-    mx, my = cx + look * s, cy + 12.5 * s
-    mc = f'class="{mouth_cls}"' if mouth_cls else ""
-    if mouth == "smile":
-        o.append(limb(f"M{n(mx - 3.5 * s)},{n(my)} Q{n(mx)},{n(my + 3 * s)} "
-                      f"{n(mx + 3.5 * s)},{n(my)}", 1.6 * s, INK))
-    elif mouth == "open":
-        o.append(ellipse(mx, my + 1 * s, 3.6 * s, 3 * s, INK, mc))
-    elif mouth == "o":
-        o.append(circle(mx, my + 1 * s, 1.8 * s, INK, mc))
-    elif mouth == "grit":
-        o.append(limb(f"M{n(mx - 4 * s)},{n(my + 1 * s)} L{n(mx + 4 * s)},{n(my + 1 * s)}",
-                      2 * s, INK))
-    return "".join(o)
-
-
-def tail_svg(x, y, flip=1, cls="", color=BODY, w=7) -> str:
-    f = flip
-    d = (f"M{n(x)},{n(y)} q{n(-24 * f)},-4 {n(-32 * f)},-28 "
-         f"q{n(-6 * f)},-22 {n(12 * f)},-30 q{n(16 * f)},-7 {n(22 * f)},6 "
-         f"q{n(4 * f)},12 {n(-8 * f)},14 q{n(-10 * f)},1 {n(-9 * f)},-8")
-    c = f'class="{cls}"' if cls else ""
-    return f'<g {c}>{limb(d, w, color)}</g>'
-
-
-def banana_svg(cx, cy, deg=0, s=1.0) -> str:
-    d = "M-12,0 Q0,13 12,0 Q13,-2 11,-1 Q5,6 0,6 Q-5,6 -11,-1 Q-13,-2 -12,0 Z"
-    return (f'<g transform="translate({n(cx)},{n(cy)}) rotate({n(deg)}) scale({n(s)})">'
-            f'<path d="{d}" fill="{BANANA}" stroke="{BANANA_EDGE}" stroke-width="0.8"/>'
-            f'{circle(-12, 0, 1.3, "#7a5a1e")}{circle(12, 0, 1.3, "#7a5a1e")}</g>')
-
-
-def note_svg(x, y, s=1.0, color="#ffe9a8") -> str:
-    return (f'<g transform="translate({n(x)},{n(y)}) scale({n(s)})">'
-            f'<ellipse cx="0" cy="0" rx="4.4" ry="3.1" fill="{color}" '
-            f'transform="rotate(-20)"/>'
-            f'<path d="M3.8,-1 V-19 q6,1 8,6" fill="none" stroke="{color}" '
-            f'stroke-width="2" stroke-linecap="round"/></g>')
+def photo_layer(jpg_path: str, w: int, h: int, activity: str) -> str:
+    zoom, px, py, dur = KEN_BURNS[activity]
+    cx, cy = w / 2, h / 2
+    # SMIL scale is around the origin; pre-scale translate keeps the zoom centred
+    px = px + cx * (1 - zoom) / zoom
+    py = py + cy * (1 - zoom) / zoom
+    with open(jpg_path, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode()
+    return (
+        '<g>'
+        f'<animateTransform attributeName="transform" type="scale" '
+        f'values="1;{n(zoom)};1" keyTimes="0;0.5;1" dur="{n(dur)}s" '
+        f'calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" '
+        f'repeatCount="indefinite"/>'
+        '<g>'
+        f'<animateTransform attributeName="transform" type="translate" '
+        f'values="0,0;{n(px)},{n(py)};0,0" keyTimes="0;0.5;1" dur="{n(dur)}s" '
+        f'calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" '
+        f'repeatCount="indefinite"/>'
+        f'<image href="data:image/jpeg;base64,{b64}" x="-{w * 0.06:.0f}" '
+        f'y="-{h * 0.06:.0f}" width="{w * 1.12:.0f}" height="{h * 1.12:.0f}" '
+        f'preserveAspectRatio="xMidYMid slice"/>'
+        '</g></g>'
+    )
 
 
 # ----------------------------------------------------------------------------
-# sitting body (shared by eating / idle); local origin = seat point
+# per-activity overlay effects (subtle; keep clear of the central face area)
 # ----------------------------------------------------------------------------
 
 
-def sitting_body() -> str:
-    o = []
-    # haunches + feet
-    for sx in (-1, 1):
-        o.append(ellipse(sx * 14, -12, 14, 10, BODY))
-        o.append(ellipse(sx * 16, -3, 9.5, 4.5, BODY_D))
-    o.append(ellipse(0, -34, 24, 30, BODY))      # body
-    o.append(ellipse(0, -28, 14, 19, CREAM))     # chest
-    return "".join(o)
+def _smil_dust(w, h, k, spots=None):
+    """Sun-dust motes drifting up (SMIL, ported from build_rohi_motion.py)."""
+    spots = spots or [(0.2, 0.8), (0.32, 0.55), (0.52, 0.82), (0.68, 0.62),
+                      (0.8, 0.7), (0.9, 0.45), (0.12, 0.4)]
+    out = []
+    for i, (fx, fy) in enumerate(spots):
+        x, y = fx * w, fy * h
+        r = (1.4 + (i % 3) * 0.5) * k
+        out.append(
+            f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{n(r)}" fill="#fff" opacity="0">'
+            f'<animate attributeName="opacity" values="0;0.35;0" dur="{5 + i * 0.8:.1f}s" '
+            f'begin="{i * 1.1:.1f}s" repeatCount="indefinite"/>'
+            f'<animate attributeName="cy" values="{y:.0f};{y - 60 * k:.0f}" dur="{9 + i:.0f}s" '
+            f'begin="{i * 1.1:.1f}s" repeatCount="indefinite"/></circle>')
+    return "".join(out)
 
 
-# ----------------------------------------------------------------------------
-# scenes — each appends to css[] and returns the foreground svg string
-# ----------------------------------------------------------------------------
+def _smil_fireflies(w, h, k):
+    """Fireflies (SMIL, ported from build_rohi_motion.py) — kept to the sides."""
+    spots = [(0.13, 0.62), (0.27, 0.45), (0.6, 0.78), (0.74, 0.4), (0.88, 0.6), (0.34, 0.3)]
+    out = []
+    for i, (fx, fy) in enumerate(spots):
+        x, y = fx * w, fy * h
+        out.append(
+            f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{n((2.5 + i % 2) * k)}" '
+            f'fill="#e8ff9c" opacity="0">'
+            f'<animate attributeName="opacity" values="0;0.9;0" dur="{3.5 + i * 0.7:.1f}s" '
+            f'begin="{i * 1.3:.1f}s" repeatCount="indefinite"/>'
+            f'<animate attributeName="cy" values="{y:.0f};{y - 26 * k:.0f};{y:.0f}" '
+            f'dur="{8 + i:.0f}s" repeatCount="indefinite"/>'
+            f'<animate attributeName="cx" values="{x:.0f};{x + 14 * k:.0f};{x:.0f}" '
+            f'dur="{6 + i:.0f}s" repeatCount="indefinite"/></circle>')
+    return "".join(out)
 
 
-def scene_eating(css, pal):
-    X, Y = 252, 238
-    css.append(kf("armEat", [
-        (0, "transform:none;"), (10, "transform:none;"),
-        (30, rot(12, -50, -115, "translate(-20px,6px) ")),
-        (55, rot(12, -50, -115, "translate(-20px,6px) ")),
-        (75, "transform:none;"), (100, "transform:none;")]))
-    css.append(".armEat{animation:armEat 3.2s ease-in-out infinite;}")
-    css.append(kf("cheekP", [
-        (0, scale_at(9, -64, 0.2, 0.2) + "opacity:0;"),
-        (28, scale_at(9, -64, 0.2, 0.2) + "opacity:0;"),
-        (40, scale_at(9, -64, 1.25, 1.25) + "opacity:1;"),
-        (62, scale_at(9, -64, 1.25, 1.25) + "opacity:1;"),
-        (78, scale_at(9, -64, 0.2, 0.2) + "opacity:0;"),
-        (100, scale_at(9, -64, 0.2, 0.2) + "opacity:0;")]))
-    css.append(".cheekP{animation:cheekP 3.2s ease-in-out infinite;}")
-    css.append(kf("chewM", [(0, scale_at(0, -59, 1, 1)),
-                            (50, scale_at(0, -59, 1, 0.35)),
-                            (100, scale_at(0, -59, 1, 1))]))
-    css.append(".chewM{animation:chewM 0.45s ease-in-out infinite;}")
-    css.append(kf("tailSway", [(0, rot(10, -12, -6)), (50, rot(10, -12, 7)),
-                               (100, rot(10, -12, -6))]))
-    css.append(".tailSway{animation:tailSway 4.5s ease-in-out infinite;}")
-
-    o = [f'<g transform="translate({X},{Y})">']
-    o.append(tail_svg(10, -12, flip=-1, cls="tailSway"))
-    o.append(sitting_body())
-    o.append(head_svg(0, -72, 1.0, eyes="open", mouth="open",
-                      mouth_cls="chewM", cheek_cls="cheekP"))
-    # resting left arm
-    o.append(limb("M-13,-48 Q-28,-38 -24,-18", 8))
-    o.append(circle(-24, -18, 5, BODY_D))
-    # animated banana arm
-    o.append('<g class="armEat">')
-    o.append(limb("M12,-50 Q30,-44 26,-22", 8))
-    o.append(circle(26, -22, 5.2, BODY_D))
-    o.append(banana_svg(30, -25, -42, 1.0))
-    o.append("</g></g>")
-    # scattered peels by the log
-    for px, py, pr in ((318, 276, 20), (352, 282, -35), (180, 280, 70)):
-        o.append(f'<g transform="translate({px},{py}) rotate({pr})">'
-                 f'<path d="M0,0 q5,-9 12,-5 q-2,7 -12,5 Z" fill="#e8c84a" '
-                 f'stroke="{BANANA_EDGE}" stroke-width="0.6"/>'
-                 f'<path d="M0,0 q-6,-8 -13,-3 q3,7 13,3 Z" fill="#f0d35e" '
-                 f'stroke="{BANANA_EDGE}" stroke-width="0.6"/></g>')
-    return "".join(o)
+def _ground_puffs(css, w, h, k, spots, drift=0.0):
+    css.append(kf("puffB", [
+        (0, f"transform:translate(0,0) scale(0.3);opacity:0;"),
+        (25, "opacity:0.5;"),
+        (100, f"transform:translate({n(drift * k)}px,{n(-8 * k)}px) scale(1.8);opacity:0;")]))
+    css.append(".puffB{animation:puffB 1.6s ease-out infinite;transform-box:fill-box;"
+               "transform-origin:center;}")
+    out = []
+    for i, (fx, fy) in enumerate(spots):
+        out.append(f'<g class="puffB" style="animation-delay:-{n(i * 0.45)}s">'
+                   + circle(fx * w, fy * h, (9 + (i % 3) * 3) * k, "#d8cdb4", 'opacity="0.5"')
+                   + "</g>")
+    return "".join(out)
 
 
-def scene_idle(css, pal):
-    X, Y = 252, 238
-    css.append(kf("tailSway", [(0, rot(10, -12, -7)), (50, rot(10, -12, 8)),
-                               (100, rot(10, -12, -7))]))
-    css.append(".tailSway{animation:tailSway 5s ease-in-out infinite;}")
-    css.append(kf("groomA", [(0, rot(13, -48, -4)), (100, rot(13, -48, 10))]))
-    css.append(".groomA{animation:groomA 0.9s ease-in-out infinite alternate;}")
-    css.append(kf("headTilt", [
-        (0, rot(0, -54, 0)), (55, rot(0, -54, 0)), (63, rot(0, -54, 9)),
-        (78, rot(0, -54, 9)), (86, rot(0, -54, 0)), (100, rot(0, -54, 0))]))
-    css.append(".headTilt{animation:headTilt 7s ease-in-out infinite;}")
-    css.append(kf("blink", [
-        (0, scale_at(0, -71, 1, 1)), (91, scale_at(0, -71, 1, 1)),
-        (94, scale_at(0, -71, 1, 0.08)), (97, scale_at(0, -71, 1, 1)),
-        (100, scale_at(0, -71, 1, 1))]))
-    css.append(".blink{animation:blink 4.6s linear infinite;}")
-
-    o = [f'<g transform="translate({X},{Y})">']
-    o.append(tail_svg(10, -12, flip=-1, cls="tailSway"))
-    o.append(sitting_body())
-    o.append('<g class="headTilt">')
-    o.append(head_svg(0, -72, 1.0, eyes="open", mouth="smile", eye_cls="blink"))
-    o.append("</g>")
-    # left arm held up (being groomed)
-    o.append(limb("M-13,-48 Q-30,-40 -18,-26", 8))
-    o.append(circle(-18, -26, 5, BODY_D))
-    # grooming right arm
-    o.append('<g class="groomA">')
-    o.append(limb("M13,-48 Q26,-44 2,-30", 8))
-    o.append(circle(2, -30, 5, BODY_D))
-    o.append("</g></g>")
-    return "".join(o)
+def fx_eating(css, defs, w, h, k):
+    return _smil_dust(w, h, k)
 
 
-def scene_sleeping(css, pal):
-    X, Y = 255, 226
-    css.append(kf("breathe", [(0, scale_at(0, 14, 1, 1)),
-                              (50, scale_at(0, 14, 1.03, 1.09)),
-                              (100, scale_at(0, 14, 1, 1))]))
-    css.append(".breathe{animation:breathe 3.2s ease-in-out infinite;}")
+def fx_sleeping(css, defs, w, h, k):
     css.append(kf("zfloat", [
         (0, "opacity:0;transform:translate(0,0);"),
         (18, "opacity:1;"),
         (80, "opacity:0.9;"),
-        (100, "opacity:0;transform:translate(20px,-48px);")]))
+        (100, f"opacity:0;transform:translate({n(24 * k)}px,{n(-58 * k)}px);")]))
     css.append(".zfloat{animation:zfloat 4.8s ease-out infinite;}")
-    # snoring mouth: little "o" pulsing at the mouth position of the head below
-    css.append(kf("snore", [(0, scale_at(-42, 8.8, 1, 1)),
-                            (50, scale_at(-42, 8.8, 1.6, 1.6)),
-                            (100, scale_at(-42, 8.8, 1, 1))]))
-    css.append(".snore{animation:snore 3.2s ease-in-out infinite;}")
-
-    o = [f'<g transform="translate({X},{Y})">']
-    # tail dangling off the log
-    o.append(limb("M22,12 q8,26 -10,36 q-14,7 -20,-3", 7))
-    # torso belly-up, breathing
-    o.append('<g class="breathe">')
-    o.append(ellipse(0, 0, 33, 18, BODY))
-    o.append(ellipse(0, -4, 20, 11, CREAM))
-    o.append("</g>")
-    # head resting at the left end
-    o.append(head_svg(-42, -4, 0.95, eyes="closed", mouth="o", mouth_cls="snore"))
-    # arm flopped across the belly, another above the head
-    o.append(limb("M-16,-8 Q0,-20 14,-9", 7.5))
-    o.append(circle(14, -9, 4.6, BODY_D))
-    o.append(limb("M-32,-12 Q-50,-24 -56,-10", 7.5))
-    o.append(circle(-56, -10, 4.6, BODY_D))
-    # legs and feet up in the air
-    o.append(limb("M26,-4 Q40,-22 35,-31", 8))
-    o.append(ellipse(35, -33, 7, 4.5, BODY_D))
-    o.append(limb("M31,2 Q52,-12 50,-22", 8))
-    o.append(ellipse(50, -24, 7, 4.5, BODY_D))
-    o.append("</g>")
-    # floating Z z z
-    fam = FAM
-    for zx, zy, fs, dl in ((205, 178, 13, 0.0), (216, 166, 17, 1.6),
-                           (228, 152, 22, 3.2)):
-        o.append(f'<text x="{zx}" y="{zy}" font-family="{fam}" font-size="{fs}" '
-                 f'font-style="italic" font-weight="700" fill="#cfe3ff" '
-                 f'class="zfloat" style="animation-delay:-{dl}s">z</text>')
+    o = [_smil_fireflies(w, h, k)]
+    zx, zy = 0.16 * w, 0.46 * h
+    for i, (dx, dy, fs, dl) in enumerate(((0, 0, 15, 0.0), (13, -14, 20, 1.6),
+                                          (28, -30, 26, 3.2))):
+        o.append(f'<text x="{n(zx + dx * k)}" y="{n(zy + dy * k)}" font-family="{FAM}" '
+                 f'font-size="{n(fs * k)}" font-style="italic" font-weight="700" '
+                 f'fill="#dfe9ff" class="zfloat" style="animation-delay:-{n(dl)}s">z</text>')
     return "".join(o)
 
 
-def scene_dancing(css, pal):
-    X, Y = 470, 282
-    css.append(kf("hips", [(0, rot(0, -20, -6, "translate(0,0) ")),
-                           (25, rot(0, -20, 0, "translate(0,-5px) ")),
-                           (50, rot(0, -20, 6, "translate(0,0) ")),
-                           (75, rot(0, -20, 0, "translate(0,-5px) ")),
-                           (100, rot(0, -20, -6, "translate(0,0) "))]))
-    css.append(".hips{animation:hips 1.6s ease-in-out infinite;}")
-    css.append(kf("armR", [(0, rot(15, -58, -150)), (50, rot(15, -58, -30)),
-                           (100, rot(15, -58, -150))]))
-    css.append(".armR{animation:armR 1.6s ease-in-out infinite;}")
-    css.append(kf("armL", [(0, rot(-15, -58, 30)), (50, rot(-15, -58, 150)),
-                           (100, rot(-15, -58, 30))]))
-    css.append(".armL{animation:armL 1.6s ease-in-out infinite;}")
-    css.append(kf("noteB", [(0, "transform:translate(0,0);opacity:0;"),
-                            (20, "opacity:1;"),
-                            (50, "transform:translate(4px,-16px);opacity:1;"),
-                            (100, "transform:translate(8px,-34px);opacity:0;")]))
-    css.append(".noteB{animation:noteB 1.7s ease-out infinite;}")
-    css.append(kf("sprk", [(0, "transform:scale(0.1);opacity:0;"),
-                           (45, "transform:scale(1);opacity:1;"),
-                           (100, "transform:scale(0.1);opacity:0;")]))
-    css.append(".sprk{animation:sprk 1.4s ease-in-out infinite;transform-box:fill-box;"
-               "transform-origin:center;}")
-    css.append(kf("spot", [(0, "opacity:0.05;"), (50, "opacity:0.16;"),
-                           (100, "opacity:0.05;")]))
-    css.append(".spot{animation:spot 1.6s ease-in-out infinite;}")
+def fx_playing(css, defs, w, h, k):
+    css.append(kf("leafFall", [
+        (0, "transform:translate(0,0) rotate(0deg);opacity:0;"),
+        (5, "opacity:0.9;"),
+        (30, f"transform:translate({n(-30 * k)}px,{n(0.36 * h)}px) rotate(120deg);opacity:0.9;"),
+        (58, f"transform:translate({n(20 * k)}px,{n(0.72 * h)}px) rotate(260deg);opacity:0.85;"),
+        (70, f"transform:translate({n(-6 * k)}px,{n(0.96 * h)}px) rotate(330deg);opacity:0;"),
+        (100, f"transform:translate({n(-6 * k)}px,{n(0.96 * h)}px) rotate(330deg);opacity:0;")]))
+    css.append(".leafFall{animation:leafFall 9s linear infinite;}")
+    leaf = (f'<g transform="translate({n(0.84 * w)},{n(-0.04 * h)})"><g class="leafFall">'
+            f'<path transform="scale({n(1.5 * k)})" d="M0,0 q10,-12 24,-10 q-5,14 -24,10 Z" '
+            f'fill="#7bb661" opacity="0.9"/></g></g>')
+    return _smil_dust(w, h, k) + leaf
 
+
+def fx_fighting(css, defs, w, h, k):
+    o = [_ground_puffs(css, w, h, k,
+                       [(0.22, 0.9), (0.32, 0.94), (0.66, 0.92), (0.8, 0.95)])]
+    px, py = 0.78 * w, 0.3 * h
+    css.append(kf("pow6", [
+        (0, scale_at(px, py, 0.1, 0.1) + "opacity:0;"),
+        (3, scale_at(px, py, 0.1, 0.1) + "opacity:0;"),
+        (6, scale_at(px, py, 1.25, 1.25) + "opacity:1;"),
+        (10, scale_at(px, py, 1, 1) + "opacity:1;"),
+        (18, scale_at(px, py, 0.5, 0.5) + "opacity:0;"),
+        (100, scale_at(px, py, 0.1, 0.1) + "opacity:0;")]))
+    css.append(".pow6{animation:pow6 6s ease-out infinite;}")
+    o.append('<g class="pow6">'
+             f'<path d="{star_path(px, py, 10, 40 * k, 20 * k, 8)}" fill="#ffd23e" '
+             f'stroke="#e2542a" stroke-width="{n(3 * k)}"/>'
+             f'<text x="{n(px)}" y="{n(py + 6 * k)}" text-anchor="middle" '
+             f'font-size="{n(19 * k)}" font-weight="800" fill="#b3271e" '
+             f'font-family="{FAM}">POW!</text></g>')
+    return "".join(o)
+
+
+def fx_dancing(css, defs, w, h, k):
+    # party glow vignette: two coloured edge glows cross-fading (colour shift)
+    for gid, col in (("pgPink", "#ff5fa8"), ("pgBlue", "#4fc3f7")):
+        defs.append(f'<radialGradient id="{gid}" cx="0.5" cy="0.5" r="0.72">'
+                    f'<stop offset="0.55" stop-color="{col}" stop-opacity="0"/>'
+                    f'<stop offset="1" stop-color="{col}" stop-opacity="0.4"/>'
+                    f'</radialGradient>')
+    css.append(kf("glowP", [(0, "opacity:0.06;"), (50, "opacity:0.55;"),
+                            (100, "opacity:0.06;")]))
+    css.append(".glowP{animation:glowP 7s ease-in-out infinite;}")
+    o = [f'<rect width="{w}" height="{h}" fill="url(#pgPink)" class="glowP"/>',
+         f'<rect width="{w}" height="{h}" fill="url(#pgBlue)" class="glowP" '
+         f'style="animation-delay:-3.5s"/>']
+    # music notes bouncing up along the sides
+    css.append(kf("noteR", [
+        (0, "transform:translate(0,0);opacity:0;"),
+        (12, "opacity:0.95;"),
+        (55, f"transform:translate({n(10 * k)}px,{n(-0.3 * h)}px);opacity:0.9;"),
+        (100, f"transform:translate({n(-6 * k)}px,{n(-0.55 * h)}px);opacity:0;")]))
+    css.append(".noteR{animation:noteR 5s ease-out infinite;}")
+    notes = ((0.06, 0.78, 2.6, "#ffe9a8"), (0.11, 0.88, 3.2, "#ffc1e3"),
+             (0.89, 0.84, 2.3, "#bde0ff"), (0.94, 0.74, 3.0, "#ffe9a8"))
+    for i, (fx, fy, s, col) in enumerate(notes):
+        o.append(f'<g class="noteR" style="animation-delay:-{n(i * 1.25)}s">'
+                 + note_svg(fx * w, fy * h, s * k, col) + "</g>")
+    return "".join(o)
+
+
+def fx_running(css, defs, w, h, k):
+    line_w = 0.24 * w
+    css.append(kf("speedX", [
+        (0, "transform:translate(0,0);"),
+        (100, f"transform:translate({n(-(w + line_w))}px,0);")]))
     o = []
-    # disco spotlights
-    o.append(f'<polygon points="430,0 466,0 560,292 380,292" fill="#ff6fae" '
-             f'class="spot"/>')
-    o.append(f'<polygon points="470,0 506,0 600,292 420,292" fill="#4fc3f7" '
-             f'class="spot" style="animation-delay:-0.8s"/>')
-    o.append(f'<g transform="translate({X},{Y})">')
-    o.append(ellipse(0, 2, 42, 7, "#000", 'opacity="0.18"'))
-    # legs planted wide
-    o.append(limb("M-10,-26 Q-16,-12 -16,-2", 9))
-    o.append(limb("M10,-26 Q16,-12 16,-2", 9))
-    o.append(ellipse(-17, -1, 9, 4.5, BODY_D))
-    o.append(ellipse(17, -1, 9, 4.5, BODY_D))
-    o.append('<g class="hips">')
-    o.append(tail_svg(12, -30, flip=-1))
-    o.append(ellipse(0, -44, 21, 27, BODY))
-    o.append(ellipse(0, -40, 12, 17, CREAM))
-    o.append(head_svg(0, -84, 1.0, eyes="happy", mouth="open"))
-    o.append('<g class="armR">' + limb("M15,-58 Q31,-50 29,-32", 8) +
-             circle(29, -32, 5, BODY_D) + "</g>")
-    o.append('<g class="armL">' + limb("M-15,-58 Q-31,-50 -29,-32", 8) +
-             circle(-29, -32, 5, BODY_D) + "</g>")
-    o.append("</g></g>")
-    # bouncing notes + sparkles
-    for i, (nx, ny, s) in enumerate(((392, 176, 1.0), (552, 162, 1.25), (508, 198, 0.85))):
-        o.append(f'<g class="noteB" style="animation-delay:-{i * 0.55}s">'
-                 + note_svg(nx, ny, s) + "</g>")
-    for i, (sx, sy, r) in enumerate(((372, 220, 6), (560, 235, 5), (430, 150, 5),
-                                     (520, 130, 6.5))):
-        o.append(f'<path d="{star_path(sx, sy, 4, r, r * 0.32)}" fill="#fff2b0" '
-                 f'class="sprk" style="animation-delay:-{i * 0.35}s"/>')
+    for i, fy in enumerate((0.16, 0.3, 0.46, 0.64, 0.82)):
+        o.append(f'<g style="animation:speedX {n(1.1 + i * 0.22)}s linear '
+                 f'-{n(i * 0.37)}s infinite">'
+                 f'<rect x="{n(w)}" y="{n(fy * h)}" width="{n(line_w)}" '
+                 f'height="{n(3.2 * k)}" rx="{n(1.6 * k)}" fill="#fff" '
+                 f'opacity="0.35"/></g>')
+    o.append(_ground_puffs(css, w, h, k, [(0.3, 0.92), (0.52, 0.95), (0.72, 0.93)],
+                           drift=-26))
     return "".join(o)
 
 
-def scene_running(css, pal):
-    # base group sits mid-scene so Rohi is visible the instant the README loads;
-    # he exits right, then wraps in from the left while fully off-screen
-    css.append(kf("runx", [(0, "transform:translate(0,0);"),
-                           (50, "transform:translate(610px,0);"),
-                           (50.01, "transform:translate(-610px,0);"),
-                           (100, "transform:translate(0,0);")]))
-    css.append(".runx{animation:runx 6.5s linear infinite;}")
-    css.append(kf("bob", [(0, "transform:translate(0,0);"),
-                          (50, "transform:translate(0,-6px);"),
-                          (100, "transform:translate(0,0);")]))
-    css.append(".bob{animation:bob 0.34s ease-in-out infinite;}")
-    css.append(kf("legA", [(0, rot(-10, -28, 38)), (50, rot(-10, -28, -38)),
-                           (100, rot(-10, -28, 38))]))
-    css.append(".legA{animation:legA 0.34s ease-in-out infinite;}")
-    css.append(".legB{animation:legA 0.34s ease-in-out -0.17s infinite;}")
-    css.append(kf("armA", [(0, rot(14, -46, -40)), (50, rot(14, -46, 40)),
-                           (100, rot(14, -46, -40))]))
-    css.append(".armA{animation:armA 0.34s ease-in-out infinite;}")
-    css.append(".armB{animation:armA 0.34s ease-in-out -0.17s infinite;}")
-    css.append(kf("puff", [(0, "transform:translate(0,0) scale(0.3);opacity:0.85;"),
-                           (100, "transform:translate(-30px,-10px) scale(1.7);opacity:0;")]))
-    css.append(".puff{animation:puff 0.55s ease-out infinite;}")
-    css.append(kf("leafw", [(0, "transform:translate(0,0) rotate(0deg);"),
-                            (100, "transform:translate(-1040px,14px) rotate(-340deg);")]))
-    css.append(".leafw{animation:leafw 2.2s linear infinite;}")
-
-    o = ['<g class="runx"><g transform="translate(450,276)">']
-    # dust puffs trailing the feet
-    for i in range(3):
-        o.append(f'<g class="puff" style="animation-delay:-{i * 0.18}s">'
-                 + circle(-34 - i * 6, -6, 6 + i * 2, "#cdbfa3", 'opacity="0.8"')
-                 + "</g>")
-    o.append('<g class="bob">')
-    # tail streaming behind
-    o.append(limb("M-24,-40 q-22,2 -34,-14 q-8,-11 -2,-18", 7))
-    # far limbs (drawn behind the body, darker)
-    o.append('<g class="legB">' + limb("M-10,-28 Q-20,-12 -10,-3", 8.5, BODY_D) +
-             ellipse(-9, -2, 7.5, 4, BODY_D) + "</g>")
-    o.append('<g class="armB">' + limb("M14,-46 Q6,-32 14,-22", 7.5, BODY_D) +
-             circle(14, -22, 4.4, BODY_D) + "</g>")
-    # leaning body
-    o.append(f'<g transform="rotate(-14)">{ellipse(0, -38, 29, 17, BODY)}'
-             f'{ellipse(4, -34, 16, 9, CREAM)}</g>')
-    # near limbs
-    o.append('<g class="legA">' + limb("M-10,-28 Q-22,-14 -12,-2", 8.5) +
-             ellipse(-11, -1, 8, 4.2, BODY_D) + "</g>")
-    o.append('<g class="armA">' + limb("M14,-46 Q24,-32 18,-20", 7.5) +
-             circle(18, -20, 4.6, BODY_D) + "</g>")
-    o.append(head_svg(26, -56, 0.9, eyes="open", mouth="open", look=4.5))
-    o.append("</g></g></g>")
-    # leaves whooshing past (scene level, opposite direction feel)
-    for i, (ly, s, dur, dl) in enumerate(((120, 1.0, 2.0, 0.0), (200, 0.8, 2.6, 0.9),
-                                          (160, 1.2, 1.7, 1.5), (245, 0.7, 2.9, 0.4))):
-        o.append(f'<g transform="translate(960,{ly}) scale({n(s)})">'
-                 f'<g class="leafw" style="animation-duration:{n(dur)}s;'
-                 f'animation-delay:-{n(dl)}s">'
-                 f'<path d="M0,0 q8,-10 20,-8 q-4,12 -20,8 Z" fill="{pal["canopy3"]}"/>'
-                 f"</g></g>")
-    return "".join(o)
-
-
-def scene_playing(css, pal):
-    ax, ay = 450, 6
-    css.append(kf("pend", [(0, rot(ax, ay, -38)), (50, rot(ax, ay, 38)),
-                           (100, rot(ax, ay, -38))]))
-    css.append(".pend{animation:pend 2.2s ease-in-out infinite;}")
-    css.append(kf("pass2", [
-        (0, "transform:translate(-130px,0);"),
-        (46, "transform:translate(130px,0);"),
-        (52, "transform:translate(130px,42px);"),
-        (96, "transform:translate(-130px,42px);"),
-        (100, "transform:translate(-130px,0);")]))
-    css.append(".pass2{animation:pass2 8.8s ease-in-out infinite;}")
-    css.append(kf("tailCurl", [(0, rot(14, 196, -8)), (50, rot(14, 196, 10)),
-                               (100, rot(14, 196, -8))]))
-    css.append(".tailCurl{animation:tailCurl 2.2s ease-in-out infinite;}")
-
-    o = ['<g class="pass2"><g class="pend">']
-    # the swing vine with leaf pairs
-    o.append(limb(f"M{ax},{ay} q4,70 0,138", 4.5, "#3c6b35"))
-    for vy in (40, 78, 112):
-        o.append(f'<path d="M{ax},{vy} q-12,-3 -16,-12 q12,-2 16,12 Z" '
-                 f'fill="{pal["canopy3"]}"/>')
-        o.append(f'<path d="M{ax},{vy + 12} q12,-3 16,-12 q-12,-2 -16,12 Z" '
-                 f'fill="{pal["canopy2"]}"/>')
-    # Rohi gripping with both hands, body stretched, legs tucked
-    mx = ax
-    o.append(circle(mx - 5, 140, 4.8, BODY_D))
-    o.append(circle(mx + 5, 143, 4.8, BODY_D))
-    o.append(limb(f"M{mx - 5},140 Q{mx - 14},158 {mx - 8},170", 7.5))
-    o.append(limb(f"M{mx + 5},143 Q{mx + 14},160 {mx + 8},170", 7.5))
-    o.append(f'<g class="tailCurl">' +
-             limb(f"M{mx + 4},206 q22,10 30,-6 q6,-13 -6,-16", 6.5) + "</g>")
-    o.append(ellipse(mx, 196, 17, 25, BODY))
-    o.append(ellipse(mx, 192, 10, 15, CREAM))
-    o.append(head_svg(mx, 166, 0.92, eyes="happy", mouth="open"))
-    # tucked legs, feet curled up
-    o.append(limb(f"M{mx - 8},214 Q{mx - 20},222 {mx - 14},232", 8))
-    o.append(ellipse(mx - 14, 233, 7, 4.2, BODY_D))
-    o.append(limb(f"M{mx + 8},214 Q{mx + 20},222 {mx + 14},232", 8))
-    o.append(ellipse(mx + 14, 233, 7, 4.2, BODY_D))
-    o.append("</g></g>")
-    return "".join(o)
-
-
-def scene_fighting(css, pal):
-    css.append(kf("lungeA", [
-        (0, "transform:translate(0,0);"), (8, "transform:translate(52px,-6px);"),
-        (16, "transform:translate(0,0);"), (50, "transform:translate(0,0);"),
-        (58, "transform:translate(-28px,0) rotate(-6deg);"),
-        (66, "transform:translate(0,0);"), (100, "transform:translate(0,0);")]))
-    css.append(".lungeA{animation:lungeA 4s ease-in-out infinite;}")
-    css.append(kf("lungeB", [
-        (0, "transform:translate(0,0);"), (8, "transform:translate(-30px,0) rotate(-6deg);"),
-        (16, "transform:translate(0,0);"), (50, "transform:translate(0,0);"),
-        (58, "transform:translate(56px,-6px);"), (66, "transform:translate(0,0);"),
-        (100, "transform:translate(0,0);")]))
-    css.append(".lungeB{animation:lungeB 4s ease-in-out infinite;}")
-    css.append(kf("dustC", [(0, scale_at(470, 252, 0.9, 0.9) + "opacity:0.45;"),
-                            (50, scale_at(470, 252, 1.15, 1.05) + "opacity:0.8;"),
-                            (100, scale_at(470, 252, 0.9, 0.9) + "opacity:0.45;")]))
-    css.append(".dustC{animation:dustC 0.9s ease-in-out infinite;}")
-    css.append(kf("pow", [
-        (0, scale_at(470, 158, 0.1, 0.1) + "opacity:0;"),
-        (7, scale_at(470, 158, 0.1, 0.1) + "opacity:0;"),
-        (10, scale_at(470, 158, 1.25, 1.25) + "opacity:1;"),
-        (14, scale_at(470, 158, 1, 1) + "opacity:1;"),
-        (24, scale_at(470, 158, 0.5, 0.5) + "opacity:0;"),
-        (57, scale_at(470, 158, 0.1, 0.1) + "opacity:0;"),
-        (60, scale_at(470, 158, 1.25, 1.25) + "opacity:1;"),
-        (64, scale_at(470, 158, 1, 1) + "opacity:1;"),
-        (74, scale_at(470, 158, 0.5, 0.5) + "opacity:0;"),
-        (100, scale_at(470, 158, 0.1, 0.1) + "opacity:0;")]))
-    css.append(".pow{animation:pow 4s ease-out infinite;}")
-
-    def fighter(body_c, cream_c, s):
-        f = []
-        f.append(ellipse(0, 1, 34, 6, "#000", 'opacity="0.18"'))
-        f.append(tail_svg(-12, -28, flip=1, color=body_c))
-        # crouched legs, wide stance
-        f.append(limb("M-9,-24 Q-20,-12 -18,-2", 9, body_c))
-        f.append(limb("M9,-24 Q20,-12 18,-2", 9, body_c))
-        f.append(ellipse(-19, -1, 9, 4.5, BODY_D))
-        f.append(ellipse(19, -1, 9, 4.5, BODY_D))
-        f.append(ellipse(0, -42, 21, 26, body_c))
-        f.append(ellipse(2, -38, 12, 16, cream_c))
-        f.append(head_svg(6, -80, 0.95, eyes="open", mouth="grit", brows=True,
-                          body=body_c))
-        # guard arms with fists up
-        f.append(limb("M14,-52 Q30,-52 30,-66", 8, body_c))
-        f.append(circle(31, -69, 6, BODY_D))
-        f.append(limb("M-12,-52 Q6,-44 16,-50", 8, body_c))
-        f.append(circle(18, -51, 5.5, BODY_D))
-        return "".join(f)
-
+def fx_idle(css, defs, w, h, k):
+    css.append(kf("twk", [(0, "opacity:0.1;"), (50, "opacity:0.9;"),
+                          (100, "opacity:0.1;")]))
     o = []
-    o.append(f'<g transform="translate(378,282)"><g class="lungeA">'
-             + fighter(BODY, CREAM, 1.0) + "</g></g>")
-    o.append(f'<g transform="translate(564,282) scale(-1.15,1.15)"><g class="lungeB">'
-             + fighter(COUSIN, COUSIN_CREAM, 1.15) + "</g></g>")
-    # comic dust cloud between them
-    dust = ['<g class="dustC">']
-    for dx, dy, dr in ((-26, 4, 13), (-8, -8, 16), (12, -2, 14), (28, 6, 11),
-                       (0, 10, 15), (-18, 12, 10)):
-        dust.append(circle(470 + dx, 252 + dy, dr, "#cdbfa3", 'opacity="0.55"'))
-    dust.append("</g>")
-    o.append("".join(dust))
-    # POW! burst
-    o.append('<g class="pow">'
-             f'<path d="{star_path(470, 158, 10, 36, 18, 8)}" fill="#ffd23e" '
-             f'stroke="#e2542a" stroke-width="3"/>'
-             f'<text x="470" y="164" text-anchor="middle" font-size="17" '
-             f'font-weight="800" fill="#b3271e" '
-             f'font-family="{FAM}">POW!</text>'
-             "</g>")
+    rng = _lcg(20260610)
+    placed = 0
+    while placed < 14:
+        fx, fy = next(rng), next(rng) * 0.34
+        r = (0.9 + next(rng) * 1.3) * k
+        dur, dl = 2.2 + next(rng) * 3.2, next(rng) * 4
+        if 0.36 < fx < 0.64 and fy > 0.15:  # keep the centre clear
+            continue
+        o.append(circle(fx * w, fy * h, r, "#f3f7ff",
+                        f'style="animation:twk {n(dur)}s ease-in-out -{n(dl)}s infinite"'))
+        placed += 1
+    # one slow shooting star streaking from the top-right
+    defs.append('<linearGradient id="shoot" x1="0" y1="0" x2="1" y2="0">'
+                '<stop offset="0" stop-color="#fff" stop-opacity="0.9"/>'
+                '<stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
+    css.append(kf("shootS", [
+        (0, "transform:translate(0,0);opacity:0;"),
+        (84, "transform:translate(0,0);opacity:0;"),
+        (88, "opacity:0.9;"),
+        (100, f"transform:translate({n(-0.42 * w)}px,0);opacity:0;")]))
+    o.append(f'<g transform="translate({n(0.88 * w)},{n(0.09 * h)}) rotate(-16)">'
+             f'<g style="animation:shootS 11s linear infinite">'
+             f'<rect x="0" y="0" width="{n(0.09 * w)}" height="{n(2.4 * k)}" '
+             f'rx="{n(1.2 * k)}" fill="url(#shoot)"/></g></g>')
     return "".join(o)
 
 
-SCENES = {
-    "eating": scene_eating, "sleeping": scene_sleeping, "dancing": scene_dancing,
-    "running": scene_running, "playing": scene_playing, "fighting": scene_fighting,
-    "idle": scene_idle,
+OVERLAYS = {
+    "eating": fx_eating, "sleeping": fx_sleeping, "playing": fx_playing,
+    "fighting": fx_fighting, "dancing": fx_dancing, "running": fx_running,
+    "idle": fx_idle,
 }
 
 
 # ----------------------------------------------------------------------------
-# environment layers
+# HUD (bars + shimmer ported from the previous sprite renderer)
 # ----------------------------------------------------------------------------
 
 
-def sky_layer(pal, defs):
-    c1, c2, c3 = pal["sky"]
-    defs.append(f'<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">'
-                f'<stop offset="0" stop-color="{c1}"/>'
-                f'<stop offset="0.55" stop-color="{c2}"/>'
-                f'<stop offset="1" stop-color="{c3}"/></linearGradient>')
-    return f'<rect width="{W}" height="{H}" fill="url(#sky)"/>'
-
-
-def celestial_layer(pal, css):
-    o = []
-    kind = pal["celestial"]
-    if kind == "sun":
-        css.append(kf("sunspin", [(0, rot(585, 76, 0)), (100, rot(585, 76, 360))]))
-        css.append(".sunspin{animation:sunspin 70s linear infinite;}")
-        rays = ['<g class="sunspin">']
-        for i in range(10):
-            a = math.pi * 2 * i / 10
-            x1 = 585 + 36 * math.cos(a)
-            y1 = 76 + 36 * math.sin(a)
-            x2 = 585 + 46 * math.cos(a)
-            y2 = 76 + 46 * math.sin(a)
-            rays.append(f'<line x1="{n(x1)}" y1="{n(y1)}" x2="{n(x2)}" y2="{n(y2)}" '
-                        f'stroke="#ffe28a" stroke-width="3.5" stroke-linecap="round" '
-                        f'opacity="0.85"/>')
-        rays.append("</g>")
-        o.append(circle(585, 76, 38, "#ffe9a0", 'opacity="0.45"'))
-        o.append(circle(585, 76, 27, "#ffd75e"))
-        o.append("".join(rays))
-    elif kind == "dusksun":
-        o.append(circle(585, 120, 42, "#ffb066", 'opacity="0.5"'))
-        o.append(circle(585, 120, 30, "#ff8c42"))
-    else:  # moon (kept low enough to clear the canopy)
-        o.append(circle(540, 96, 26, "#f2efd9"))
-        o.append(circle(551, 89, 22, pal["sky"][0]))
-        o.append(circle(540, 96, 30, "#f2efd9", 'opacity="0.12"'))
-    if pal["stars"]:
-        css.append(kf("tw", [(0, "opacity:0.25;"), (50, "opacity:1;"),
-                             (100, "opacity:0.25;")]))
-        rng = _lcg(20260610)
-        for i in range(26):
-            sx = 16 + next(rng) * (W - 32)
-            sy = 12 + next(rng) * 130
-            sr = 0.7 + next(rng) * 1.1
-            dur = 2.2 + next(rng) * 3.4
-            dl = next(rng) * 4
-            o.append(circle(sx, sy, sr, "#e9f1ff",
-                            f'style="animation:tw {n(dur)}s ease-in-out -{n(dl)}s infinite"'))
-    return "".join(o)
-
-
-def firefly_layer(css):
-    css.append(kf("ffl", [(0, "opacity:0.15;"), (50, "opacity:1;"),
-                          (100, "opacity:0.15;")]))
-    o = []
-    rng = _lcg(937)
-    for i in range(7):
-        fx = 60 + next(rng) * 780
-        fy = 150 + next(rng) * 110
-        dx1, dy1 = (next(rng) - 0.5) * 70, (next(rng) - 0.5) * 44
-        dx2, dy2 = (next(rng) - 0.5) * 70, (next(rng) - 0.5) * 44
-        dur = 6 + next(rng) * 4
-        name = f"fly{i}"
-        css.append(kf(name, [
-            (0, "transform:translate(0,0);"),
-            (33, f"transform:translate({n(dx1)}px,{n(dy1)}px);"),
-            (66, f"transform:translate({n(dx2)}px,{n(dy2)}px);"),
-            (100, "transform:translate(0,0);")]))
-        o.append(f'<g transform="translate({n(fx)},{n(fy)})">'
-                 f'<g style="animation:{name} {n(dur)}s ease-in-out infinite">'
-                 + circle(0, 0, 4.2, "#d9f76a", 'opacity="0.25"')
-                 + circle(0, 0, 1.6, "#eaffa0",
-                          f'style="animation:ffl {n(1.1 + i * 0.21)}s ease-in-out infinite"')
-                 + "</g></g>")
-    return "".join(o)
-
-
-def canopy_layer(pal, css, with_swing_gap=False):
-    css.append(kf("vsway", [(0, rot(0, 0, -2.2)), (50, rot(0, 0, 2.2)),
-                            (100, rot(0, 0, -2.2))]))
-    o = []
-    back = [(60, 26, 150, 66), (255, 4, 150, 52), (700, 22, 170, 72), (875, 60, 150, 92)]
-    mid = [(-10, 44, 120, 80), (165, 16, 125, 48), (830, 26, 150, 84), (645, 0, 110, 40)]
-    front = [(-20, 76, 105, 76), (912, 92, 115, 86)]
-    for cx, cy, rx, ry in back:
-        o.append(ellipse(cx, cy, rx, ry, pal["canopy1"]))
-    for cx, cy, rx, ry in mid:
-        o.append(ellipse(cx, cy, rx, ry, pal["canopy2"]))
-    for cx, cy, rx, ry in front:
-        o.append(ellipse(cx, cy, rx, ry, pal["canopy3"], 'opacity="0.9"'))
-    # hanging deco vines (skip middle one if the swing vine owns that space)
-    vine_xs = (132, 790) if with_swing_gap else (132, 640, 790)
-    for i, vx in enumerate(vine_xs):
-        v = [f'<g transform="translate({vx},0)">'
-             f'<g class="" style="animation:vsway {n(5 + i * 1.3)}s ease-in-out infinite">']
-        v.append(limb("M0,0 q-7,52 4,96", 3.5, "#3c6b35"))
-        for vy in (34, 64, 90):
-            v.append(f'<path d="M{n(2 - vy / 30)},{vy} q-12,-2 -15,-11 q11,-2 15,11 Z" '
-                     f'fill="{pal["canopy2"]}"/>')
-        v.append("</g></g>")
-        o.append("".join(v))
-    return "".join(o)
-
-
-def ground_layer(pal):
-    o = [f'<rect x="0" y="270" width="{W}" height="50" fill="{pal["ground"]}"/>',
-         f'<rect x="0" y="270" width="{W}" height="7" fill="{pal["ground2"]}"/>']
-    rng = _lcg(4242)
-    for i in range(14):
-        gx = 14 + next(rng) * (W - 28)
-        gy = 282 + next(rng) * 30
-        o.append(f'<path d="M{n(gx)},{n(gy)} q2,-9 5,-11 M{n(gx + 5)},{n(gy)} q1,-7 6,-9" '
-                 f'fill="none" stroke="{pal["moss"]}" stroke-width="1.6" '
-                 f'stroke-linecap="round" opacity="0.7"/>')
-    return "".join(o)
-
-
-def log_layer(pal):
-    o = []
-    o.append(f'<rect x="158" y="238" width="190" height="40" rx="20" fill="{pal["log"]}"/>')
-    o.append(ellipse(348, 258, 13, 20, pal["log2"]))
-    o.append(ellipse(348, 258, 7, 11, pal["log"],
-                     f'stroke="{pal["log2"]}" stroke-width="2"'))
-    for bx in (190, 240, 295):
-        o.append(f'<path d="M{bx},244 q14,4 30,2" fill="none" stroke="#000" '
-                 f'stroke-width="1.5" opacity="0.15" stroke-linecap="round"/>')
-    for mx, my, mr in ((185, 240, 12), (262, 238, 16), (322, 241, 10)):
-        o.append(ellipse(mx, my, mr, 4.5, pal["moss"], 'opacity="0.85"'))
-    return "".join(o)
-
-
-# ----------------------------------------------------------------------------
-# HUD
-# ----------------------------------------------------------------------------
-
-
-def hud_layer(state, css, defs, activity):
+def hud_layer(state, css, defs):
     def clamp(v):
         try:
             return max(0, min(100, int(v)))
@@ -848,8 +456,8 @@ def hud_layer(state, css, defs, activity):
     css.append(".shimX{animation:shimX 2.8s linear infinite;}")
 
     fam = FAM
-    o = [f'<rect x="12" y="10" width="296" height="74" rx="12" fill="#000" opacity="0.28"/>',
-         f'<rect x="690" y="10" width="198" height="106" rx="12" fill="#000" opacity="0.28"/>']
+    o = [f'<rect x="12" y="10" width="296" height="74" rx="12" {PANEL}/>',
+         f'<rect x="690" y="10" width="198" height="106" rx="12" {PANEL}/>']
     track_x, track_w = 96, 168
     for i, (label, val, color) in enumerate(bars):
         y = 20 + i * 22
@@ -901,15 +509,15 @@ def hud_layer(state, css, defs, activity):
     return "".join(o)
 
 
-def caption_layer(activity):
+def caption_layer(activity, design_h):
     text = CAPTIONS.get(activity, CAPTIONS["idle"])
     fam = FAM
-    w = 36 + round(6.4 * len(text))
-    return (f'<rect x="16" y="288" width="{w}" height="22" rx="11" fill="#000" '
-            f'opacity="0.35"/>'
-            + circle(30, 299, 3.5, "#7ee081")
-            + f'<text x="40" y="303" font-size="11.5" font-weight="600" fill="#fff" '
-              f'font-family="{fam}">{escape(text)}</text>')
+    wc = 36 + round(6.4 * len(text))
+    y = design_h - 34
+    return (f'<rect x="16" y="{n(y)}" width="{wc}" height="22" rx="11" {PANEL}/>'
+            + circle(30, y + 11, 3.5, "#7ee081")
+            + f'<text x="40" y="{n(y + 15)}" font-size="11.5" font-weight="600" '
+              f'fill="#fff" font-family="{fam}">{escape(text)}</text>')
 
 
 # ----------------------------------------------------------------------------
@@ -917,38 +525,41 @@ def caption_layer(activity):
 # ----------------------------------------------------------------------------
 
 
-def build_svg(state: dict, activity: str, now: datetime) -> str:
-    phase = sky_phase(now)
-    pal = PALETTES[phase]
+def build_svg(state: dict, activity: str, now: datetime) -> tuple[str, str]:
+    jpg_path, photo_name = find_photo(activity)
+    w, h = jpeg_size(jpg_path)
+    k = w / REF_W                 # HUD design-space scale
+    design_h = h / k
+
     css: list[str] = []
-    defs: list[str] = [f'<clipPath id="frame"><rect width="{W}" height="{H}" rx="16"/>'
-                       "</clipPath>"]
-    layers: list[str] = []
+    defs: list[str] = [f'<clipPath id="frame"><rect width="{w}" height="{h}" rx="{n(18 * k)}"/>'
+                       "</clipPath>",
+                       '<radialGradient id="vig" cx="0.5" cy="0.5" r="0.75">'
+                       '<stop offset="0.62" stop-color="#000" stop-opacity="0"/>'
+                       '<stop offset="1" stop-color="#000" stop-opacity="0.32"/>'
+                       '</radialGradient>']
 
-    layers.append(sky_layer(pal, defs))
-    layers.append(celestial_layer(pal, css))
-    layers.append(canopy_layer(pal, css, with_swing_gap=(activity == "playing")))
-    layers.append(ground_layer(pal))
-    layers.append(log_layer(pal))
-    layers.append(SCENES[activity](css, pal))
-    if pal["fireflies"] or activity == "sleeping":
-        layers.append(firefly_layer(css))
-    layers.append(hud_layer(state, css, defs, activity))
-    layers.append(caption_layer(activity))
+    layers = [photo_layer(jpg_path, w, h, activity)]
+    layers.append(OVERLAYS[activity](css, defs, w, h, k))
+    layers.append(f'<rect width="{w}" height="{h}" fill="url(#vig)"/>')
+    layers.append(f'<g transform="scale({n(k)})">'
+                  + hud_layer(state, css, defs)
+                  + caption_layer(activity, design_h)
+                  + "</g>")
 
-    style = "".join(css)
-    title = escape(f"Rohi the capuchin - {CAPTIONS.get(activity, activity)}")
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
-        f'width="{W}" height="{H}" role="img" aria-label="{title}">'
+    title = escape(f"Rohi the capuchin - {CAPTIONS.get(activity, activity)} - "
+                   f"{now.strftime('%-I:%M %p')} in Charlotte", {'"': "&quot;"})
+    svg = (
+        f'<svg xmlns="http://www.w3.org/2000/svg" '
+        f'xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {w} {h}" '
+        f'width="{w}" height="{h}" role="img" aria-label="{title}">'
         f"<title>{title}</title>"
-        f"<style>{style}</style>"
+        f"<style>{''.join(css)}</style>"
         f"<defs>{''.join(defs)}</defs>"
         f'<g clip-path="url(#frame)">{"".join(layers)}</g>'
-        f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="16" fill="none" '
-        f'stroke="#000" stroke-opacity="0.35" stroke-width="1"/>'
         f"</svg>"
     )
+    return svg, f"{photo_name} {w}x{h}"
 
 
 def main(argv=None) -> int:
@@ -966,7 +577,7 @@ def main(argv=None) -> int:
               file=sys.stderr)
         activity = "idle"
 
-    svg = build_svg(state, activity, now_charlotte())
+    svg, photo_info = build_svg(state, activity, now_charlotte())
 
     out_dir = os.path.dirname(os.path.abspath(args.out))
     if out_dir:
@@ -974,7 +585,8 @@ def main(argv=None) -> int:
     with open(args.out, "w", encoding="utf-8") as fh:
         fh.write(svg)
     print(f"render_rohi: wrote {args.out} "
-          f"({len(svg.encode('utf-8'))} bytes, activity={activity})", file=sys.stderr)
+          f"({len(svg.encode('utf-8'))} bytes, activity={activity}, photo={photo_info})",
+          file=sys.stderr)
     return 0
 
 
