@@ -302,14 +302,18 @@ flowchart LR
 
 <div align="center">
 
-**🐒 Meet Rohi, the resident monkey.** He lives here in real time on Charlotte hours: bananas for breakfast and lunch, swinging through the canopy in the morning, **play-wrestling his cousin** in the afternoon, and after a big dinner he sleeps **belly-up like an uncle** under the fireflies. **Your commits are his food.** Every push feeds him, and the scene updates every 2 hours to whatever he is doing right now.
+**🐒 Meet Rohi, the resident monkey.** He lives here in real time on Charlotte hours: bananas for breakfast and lunch, swinging through the canopy in the morning, **play-wrestling his cousin** in the afternoon, and after a big dinner he sleeps **belly-up like an uncle** under the fireflies. **Your commits are his food.** Every push feeds him, and the scene updates every 2 hours to whatever he is doing right now. **And now he's playable:** the buttons under the scene let you feed him, dance with him, give him head pats, or challenge him to a wrestle or a treetop race — wins and losses go on his record, and every move earns him XP.
 
 <!-- ROHI:START -->
 <div align="center">
 
-<img src="assets/rohi/eating.svg" width="100%" alt="Rohi the capuchin monkey, currently eating"/>
+<img src="assets/rohi/rohi.svg?v=1781145002" width="100%" alt="Rohi the capuchin monkey, currently sleeping"/>
 
-<sub>📷 <b>Rohi is having bananas on the log 🍌 · 9:28 PM in Charlotte · fed 48 🍌 today</b> · the photo rotates with his real schedule, every 2 hours</sub>
+<sub>🎮 <b>Rohi is fast asleep, belly full, uncle mode 💤 · 10:30 PM in Charlotte · hungry, somebody push some code 🍌 · LVL 1 · 0 XP</b></sub>
+
+[![🍌 Feed](https://img.shields.io/badge/%F0%9F%8D%8C%20Feed-ffd54f?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Afeed&body=Click+%22Submit+new+issue%22+and+Rohi+gets+a+banana.+The+scene+updates+in+~30s.) [![🕺 Dance](https://img.shields.io/badge/%F0%9F%95%BA%20Dance-e040fb?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Adance&body=Click+%22Submit+new+issue%22+and+Rohi+busts+a+move+for+you.+The+scene+updates+in+~30s.) [![🤼 Wrestle](https://img.shields.io/badge/%F0%9F%A4%BC%20Wrestle-ef5350?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Awrestle&body=Click+%22Submit+new+issue%22+to+challenge+Rohi+in+the+canopy+ring.+The+scene+updates+in+~30s.) [![🏃 Race](https://img.shields.io/badge/%F0%9F%8F%83%20Race-42a5f5?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Arace&body=Click+%22Submit+new+issue%22+to+race+Rohi+through+the+treetops.+The+scene+updates+in+~30s.) [![❤️ Pet](https://img.shields.io/badge/%E2%9D%A4%EF%B8%8F%20Pet-ec407a?style=flat-square)](https://github.com/rohithkandula19/rohithkandula19/issues/new?title=rohi%3Apet&body=Click+%22Submit+new+issue%22+to+give+Rohi+head+pats.+The+scene+updates+in+~30s.)
+
+<sub>No playmates yet — press a button above and be Rohi's first friend 🐒</sub>
 
 </div>
 <!-- ROHI:END -->

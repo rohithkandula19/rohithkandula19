@@ -1,0 +1,57 @@
+name: Rohi plays
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: rohi
+  cancel-in-progress: false
+
+jobs:
+  play:
+    if: startsWith(github.event.issue.title, 'rohi:')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Play with Rohi
+        id: play
+        # Event data goes through env only — never interpolated into the script.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          PLAYER: ${{ github.event.issue.user.login }}
+        run: |
+          ACTION="${ISSUE_TITLE#rohi:}"
+          ACTION="$(printf '%s' "$ACTION" | tr -cd 'a-zA-Z' | cut -c1-16)"
+          REPLY="$(python3 scripts/rohi_game/rohi_engine.py action --type "$ACTION" --user "$PLAYER" | tail -n 1)"
+          echo "reply=$REPLY" >> "$GITHUB_OUTPUT"
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets/rohi/rohi.svg data/rohi_state.json
+          git diff --cached --quiet || { git commit -m "chore: Rohi plays [skip ci]"; git pull --rebase origin main; git push; }
+
+      - name: Label the issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          gh label create rohi-game --color FFD54F --description "Someone played with Rohi" || true
+          gh issue edit "$ISSUE_URL" --add-label rohi-game || true
+
+      - name: Reply and close
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          REPLY: ${{ steps.play.outputs.reply }}
+        run: |
+          gh issue comment "$ISSUE_URL" --body "$REPLY"
+          gh issue close "$ISSUE_URL" --reason completed
