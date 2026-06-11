@@ -26,20 +26,20 @@
 
 <div align="center"><h2>🌌 WHO AM I</h2></div>
 
-I'm an AI/ML Engineer who gets a kick out of taking ideas from zero to production. Not the kind who fine-tunes a model in a notebook and calls it a day -- I mean actually shipping things: APIs, cloud deployments, real users, real data.
+I'm an AI/ML Engineer who gets a kick out of taking ideas from zero to production. Not the kind who fine-tunes a model in a notebook and calls it a day. I mean actually shipping things: APIs, cloud deployments, real users, real data.
 
-I've spent the last 4+ years obsessing over the full stack of AI -- from training PyTorch models and building RAG pipelines to wiring up Kafka event streams and deploying on GCP and AWS. If it involves LLMs, agents, or real-time ML, I've probably broken it three times and shipped it on the fourth.
+I've spent the last 4+ years obsessing over the full stack of AI: from training PyTorch models and building RAG pipelines to wiring up Kafka event streams and deploying on GCP and AWS. If it involves LLMs, agents, or real-time ML, I've probably broken it three times and shipped it on the fourth.
 
-Right now I'm building toward roles at companies that actually push the frontier -- Anthropic, OpenAI, Google DeepMind. Not because of the hype, but because I genuinely care about where this technology goes.
+Right now I'm building toward roles at companies that actually push the frontier: Anthropic, OpenAI, Google DeepMind. Not because of the hype, but because I genuinely care about where this technology goes.
 
 ```python
 rohith = {
     "location"  : "Charlotte, NC",
-    "education" : "MS Information Technology -- University of Cincinnati (GPA: 3.89)",
+    "education" : "MS Information Technology, University of Cincinnati (GPA: 3.89)",
     "cert"      : "AWS Solutions Architect Associate",
     "currently" : "Building production AI systems. Shipping. Repeating.",
     "targeting" : ["Anthropic", "OpenAI", "Google DeepMind", "Meta AI"],
-    "status"    : "Open to AI Engineer | GenAI | LLM | MLOps -- US",
+    "status"    : "Open to AI Engineer | GenAI | LLM | MLOps (US)",
 }
 ```
 
@@ -54,11 +54,11 @@ rohith = {
 ![Tests](https://img.shields.io/badge/tests-1%2C376_passing-brightgreen?style=flat-square)
 ![Runs on](https://img.shields.io/badge/runs_on-Claude_or_free_models-d4a373?style=flat-square)
 
-A Claude-Code-style terminal agent that reads, edits, and runs your code -- every write behind a diff you approve. Built on a **provider-agnostic** framework, so the same agent runs on Claude for top quality or **free** on Gemini / Cerebras / Groq / Ollama (`--offline` strips every network tool for air-gapped coding). The multi-provider design unlocks things a single-vendor agent structurally can't:
+A Claude-Code-style terminal agent that reads, edits, and runs your code, every write behind a diff you approve. Built on a **provider-agnostic** framework, so the same agent runs on Claude for top quality or **free** on Gemini / Cerebras / Groq / Ollama (`--offline` strips every network tool for air-gapped coding). The multi-provider design unlocks things a single-vendor agent structurally can't:
 
-- **Consensus** -- run a task across several models in parallel; a judge synthesizes one cross-checked answer
-- **Dojo** -- rival models each attempt the same change in isolated git worktrees; a judge picks the best diff
-- **Kaizen** -- the agent finds a weakness in its *own* source, fixes it in a worktree, and keeps the diff only if the test suite passes
+- **Consensus**: run a task across several models in parallel; a judge synthesizes one cross-checked answer
+- **Dojo**: rival models each attempt the same change in isolated git worktrees; a judge picks the best diff
+- **Kaizen**: the agent finds a weakness in its *own* source, fixes it in a worktree, and keeps the diff only if the test suite passes
 
 ```
 Python  ->  7-package monorepo  ->  1,376 offline tests  ->  MCP + 200 plugins
@@ -82,7 +82,7 @@ Python  ->  7-package monorepo  ->  1,376 offline tests  ->  MCP + 200 plugins
 ### 🧠 [RO MedRAG](https://romedrag.me)
 [![Live](https://img.shields.io/badge/LIVE-romedrag.me-00D9FF?style=flat-square)](https://romedrag.me)
 
-Medical research is buried in millions of papers. I built an agentic RAG system that searches PubMed in real-time, pulls the right papers, and synthesizes clinical answers using Claude Sonnet -- all streamed live to the user.
+Medical research is buried in millions of papers. I built an agentic RAG system that searches PubMed in real-time, pulls the right papers, and synthesizes clinical answers using Claude Sonnet, all streamed live to the user.
 
 ```
 LangGraph -> FAISS -> PubMed API -> Claude Sonnet
@@ -99,7 +99,7 @@ FastAPI -> GCP Cloud Run -> PostgreSQL -> SSE
 ### 🎯 [RO AI Recommendation Engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 
-I got curious about how Netflix actually works under the hood -- so I built it. A proper two-tower PyTorch model with BPR loss, 4-source candidate generation, LightGBM reranking, and a Kafka event pipeline on Kubernetes.
+I got curious about how Netflix actually works under the hood. So I built it. A proper two-tower PyTorch model with BPR loss, 4-source candidate generation, LightGBM reranking, and a Kafka event pipeline on Kubernetes.
 
 ```
 PyTorch BPR -> FAISS IVFPQ -> LightGBM LTR -> MMR
@@ -133,7 +133,7 @@ GCP Cloud Run -> Firebase Hosting
 ### 📊 [ROVA AI Forecasting](https://github.com/rohithkandula19/rova-ai-forecasting)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/rova-ai-forecasting)
 
-A full ML forecasting platform with a proper pipeline -- PyTorch NN + LSTM ensemble, 128-dimensional feature engineering, SHAP attributions for explainability, and KL-divergence drift detection that auto-retrains when the distribution shifts. 14 screens on GCP.
+A full ML forecasting platform with a proper pipeline: PyTorch NN + LSTM ensemble, 128-dimensional feature engineering, SHAP attributions for explainability, and KL-divergence drift detection that auto-retrains when the distribution shifts. 14 screens on GCP.
 
 ```
 PyTorch NN + LSTM -> MLflow -> Celery + Redis
@@ -151,7 +151,7 @@ Prometheus + Grafana -> GCP Cloud Run
 ### 🔍 [RO Fraud Detection](https://rover-ai.duckdns.org)
 [![Live](https://img.shields.io/badge/LIVE-rover--ai.duckdns.org-00FF88?style=flat-square)](https://rover-ai.duckdns.org)
 
-Enterprise fraud detection with LangGraph agents doing the heavy lifting -- real-time risk scoring, multi-step reasoning on each transaction, full audit trail on every decision. Deployed on AWS EC2 with Nginx and SSL. Actually production-grade.
+Enterprise fraud detection with LangGraph agents doing the heavy lifting: real-time risk scoring, multi-step reasoning on each transaction, full audit trail on every decision. Deployed on AWS EC2 with Nginx and SSL. Actually production-grade.
 
 ```
 LangGraph Agents -> FastAPI -> SQLAlchemy
@@ -167,7 +167,7 @@ AWS EC2 -> Docker -> Nginx -> Let's Encrypt
 ### 🚌 [MR Buses](https://mrbusportal.com)
 [![Live](https://img.shields.io/badge/LIVE-mrbusportal.com-00D9FF?style=flat-square)](https://mrbusportal.com)
 
-A full interstate bus booking platform with an AI chatbot that actually knows the routes, schedules, and can help you book -- not just answer FAQs. Google OAuth, real-time seat booking, admin dashboard. Live on GCP.
+A full interstate bus booking platform with an AI chatbot that actually knows the routes, schedules, and can help you book, not just answer FAQs. Google OAuth, real-time seat booking, admin dashboard. Live on GCP.
 
 ```
 LangChain RAG -> FastAPI -> GCP Cloud Run
