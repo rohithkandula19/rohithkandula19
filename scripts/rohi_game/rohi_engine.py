@@ -20,6 +20,7 @@ Stdlib only. Python 3.11+.
 """
 import argparse
 import datetime
+import glob
 import json
 import math
 import os
@@ -35,7 +36,7 @@ USER = "rohithkandula19"
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 STATE_PATH = os.path.join(ROOT, "data", "rohi_state.json")
 README_PATH = os.path.join(ROOT, "README.md")
-SVG_PATH = os.path.join(ROOT, "assets", "rohi", "rohi.svg")
+LIVE_DIR = os.path.join(ROOT, "assets", "rohi", "live")
 RENDERER = os.path.join(ROOT, "scripts", "rohi_game", "render_rohi.py")
 ET = zoneinfo.ZoneInfo("America/New_York")
 
@@ -66,15 +67,15 @@ PLAYER_ACTIONS = tuple(XP)
 # Button row: action -> (emoji, label, badge color, prefilled issue body).
 BUTTONS = {
     "feed": ("🍌", "Feed", "ffd54f",
-             'Click "Submit new issue" and Rohi gets a banana. The scene updates in ~30s.'),
+             'Click "Submit new issue" and Rohi gets a banana. Give it ~30s, then refresh the profile to watch him react. He stays in the mood for an hour.'),
     "dance": ("🕺", "Dance", "e040fb",
-              'Click "Submit new issue" and Rohi busts a move for you. The scene updates in ~30s.'),
+              'Click "Submit new issue" and Rohi busts a move for you. Give it ~30s, then refresh the profile to watch him react. He stays in the mood for an hour.'),
     "wrestle": ("🤼", "Wrestle", "ef5350",
-                'Click "Submit new issue" to challenge Rohi in the canopy ring. The scene updates in ~30s.'),
+                'Click "Submit new issue" to challenge Rohi in the canopy ring. Give it ~30s, then refresh the profile to watch him react. He stays in the mood for an hour.'),
     "race": ("🏃", "Race", "42a5f5",
-             'Click "Submit new issue" to race Rohi through the treetops. The scene updates in ~30s.'),
+             'Click "Submit new issue" to race Rohi through the treetops. Give it ~30s, then refresh the profile to watch him react. He stays in the mood for an hour.'),
     "pet": ("❤️", "Pet", "ec407a",
-            'Click "Submit new issue" to give Rohi head pats. The scene updates in ~30s.'),
+            'Click "Submit new issue" to give Rohi head pats. Give it ~30s, then refresh the profile to watch him react. He stays in the mood for an hour.'),
 }
 
 START_MARK = "<!-- ROHI:START -->"
@@ -139,6 +140,7 @@ def default_state():
         "dances": 0,
         "pets": 0,
         "recent_players": [],
+        "mood_until_utc": "",
         "last_tick_utc": iso_utc(),
         "updated_utc": iso_utc(),
     }
@@ -207,9 +209,9 @@ def bananas_today():
 
 # ------------------------------------------------- render + README block
 
-def render_svg(state):
+def render_svg(state, out_path):
     subprocess.run(
-        [sys.executable, RENDERER, "--state", STATE_PATH, "--out", SVG_PATH],
+        [sys.executable, RENDERER, "--state", STATE_PATH, "--out", out_path],
         cwd=ROOT,
         check=True,
         capture_output=True,  # keep engine stdout clean: the reply must be last
@@ -231,7 +233,7 @@ def badge_md(action):
     return f"[![{emoji} {label}]({badge_url})]({issue_url})"
 
 
-def build_block(state, when_et):
+def build_block(state, when_et, svg_rel):
     fed = state["bananas_today"]
     fed_bit = f"fed {fed} 🍌 today" if fed else "hungry, somebody push some code 🍌"
     caption = (
@@ -246,11 +248,10 @@ def build_block(state, when_et):
         )
     else:
         recent = "No playmates yet — press a button above and be Rohi's first friend 🐒"
-    cache_bust = int(now_utc().timestamp())
     return f"""
 <div align="center">
 
-<img src="assets/rohi/rohi.svg?v={cache_bust}" width="100%" alt="Rohi the capuchin monkey, currently {state['activity']}"/>
+<img src="{svg_rel}" width="100%" alt="Rohi the capuchin monkey, currently {state['activity']}"/>
 
 <sub>🎮 <b>{caption}</b></sub>
 
@@ -262,12 +263,12 @@ def build_block(state, when_et):
 """
 
 
-def rewrite_readme(state, when_et):
+def rewrite_readme(state, when_et, svg_rel):
     with open(README_PATH, encoding="utf-8") as f:
         text = f.read()
     if START_MARK not in text or END_MARK not in text:
         raise SystemExit("ROHI markers missing from README")
-    block = build_block(state, when_et)
+    block = build_block(state, when_et, svg_rel)
     new = re.sub(
         rf"({re.escape(START_MARK)})(.*?)({re.escape(END_MARK)})",
         lambda m: m.group(1) + block + m.group(3),
@@ -279,10 +280,20 @@ def rewrite_readme(state, when_et):
 
 
 def persist_everything(state, when_et):
-    """Contract order: save state first (the renderer reads it), then render, then README."""
+    """Contract order: save state first (the renderer reads it), then render, then README.
+
+    Every render goes to a fresh file path: GitHub's raw CDN caches by path and
+    ignores query strings (~5 min TTL), so reusing one path shows a stale scene
+    right after a player action. The previous render is removed in the same
+    commit, keeping exactly one live SVG in the tree.
+    """
     save_state(state)
-    render_svg(state)
-    rewrite_readme(state, when_et)
+    os.makedirs(LIVE_DIR, exist_ok=True)
+    for old in glob.glob(os.path.join(LIVE_DIR, "rohi-*.svg")):
+        os.remove(old)
+    svg_rel = f"assets/rohi/live/rohi-{int(now_utc().timestamp())}.svg"
+    render_svg(state, os.path.join(ROOT, svg_rel))
+    rewrite_readme(state, when_et, svg_rel)
 
 
 # ----------------------------------------------------------------- tick
@@ -305,7 +316,15 @@ def recent_boost(state, when_utc):
 def cmd_tick():
     state = load_state()
     when = now_et()
-    state["activity"] = os.environ.get("ROHI_ACT") or pick_activity(when.hour)
+    forced = os.environ.get("ROHI_ACT")
+    mood_live = False
+    if not forced and state.get("mood_until_utc"):
+        try:
+            mood_live = now_utc() < datetime.datetime.fromisoformat(state["mood_until_utc"])
+        except ValueError:
+            pass
+    if not mood_live:  # a player-set mood survives scheduled ticks for its hour
+        state["activity"] = forced or pick_activity(when.hour)
     if state["activity"] not in ACTIVITIES:
         state["activity"] = "idle"
 
@@ -366,6 +385,7 @@ def cmd_action(action, user):
     win_xp, lose_xp = XP[action]
 
     if action == "feed":
+        state["activity"] = "eating"
         state["hunger"] = clamp(state["hunger"] + 12)
         state["bananas_total"] += 1
         state["xp"] += win_xp
@@ -421,6 +441,9 @@ def cmd_action(action, user):
                 f"@{user} outran Rohi to the big banana tree! race wins stay at {state['races_won']}. "
                 f"He blames a slippery branch. 🏃"
             )
+
+    if action != "pet":  # pets are gentle: no scene change, no mood lock
+        state["mood_until_utc"] = (now_utc() + datetime.timedelta(hours=1)).isoformat()
 
     old_level = state["level"]
     state["level"] = level_for(state["xp"])
