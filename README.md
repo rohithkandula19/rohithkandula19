@@ -16,7 +16,6 @@
 [![Fraud Detection](https://img.shields.io/badge/RO_Fraud_Detection-Live-FFD700?style=for-the-badge&logo=googlechrome&logoColor=black)](https://rover-ai.duckdns.org)
 [![Open To Work](https://img.shields.io/badge/Open_To_Work-AI_Engineer-7b2fff?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
 [![Ask My AI](https://img.shields.io/badge/🤖_Ask_My_AI-the_site_talks_back-FF6B9D?style=for-the-badge)](https://www.rohithkandula.com)
-[![Sponsor](https://img.shields.io/badge/❤️_Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/rohithkandula19)
 
 <br/>
 
