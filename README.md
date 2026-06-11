@@ -318,21 +318,19 @@ flowchart LR
 
 | Credential | Details |
 |---|---|
-| [Claude with Google Cloud's Vertex AI](https://verify.skilljar.com/c/6nrrh5xfejxq) | Anthropic Education -- May 2026 |
-| [Claude 101](https://verify.skilljar.com/c/jqz4es75zbxm) | Anthropic -- Apr 2026 |
-| [AI Fluency: Framework & Foundations](https://verify.skilljar.com/c/2f42572kjdgg) | Anthropic -- Apr 2026 |
-| AWS Certified Solutions Architect -- Associate | Amazon Web Services -- May 2025 (exp. May 2028) |
-| MS, Information Technology | University of Cincinnati -- GPA 3.89 -- Dec 2024 |
-| Deep Learning Specialization | Andrew Ng / DeepLearning.AI -- 2024 |
-| LangChain & LLM Agents for Production | DeepLearning.AI -- 2024 |
+| [Claude with Google Cloud's Vertex AI](https://verify.skilljar.com/c/6nrrh5xfejxq) | Anthropic Education · May 2026 |
+| [Claude 101](https://verify.skilljar.com/c/jqz4es75zbxm) | Anthropic · Apr 2026 |
+| [AI Fluency: Framework & Foundations](https://verify.skilljar.com/c/2f42572kjdgg) | Anthropic · Apr 2026 |
+| AWS Certified Solutions Architect – Associate | Amazon Web Services · May 2025 (exp. May 2028) |
+| MS, Information Technology | University of Cincinnati · GPA 3.89 · Dec 2024 |
+| Deep Learning Specialization | Andrew Ng / DeepLearning.AI · 2024 |
+| LangChain & LLM Agents for Production | DeepLearning.AI · 2024 |
 
 </div>
 
 ---
 
 <div align="center">
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=0:000000,50:130533,100:000000&height=150&section=footer&animation=fadeIn"/>
 
 [![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula19)
 [![Portfolio](https://img.shields.io/badge/Portfolio-rohithkandula.com-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.rohithkandula.com)
