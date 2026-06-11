@@ -196,7 +196,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 | [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 30 ms |
 | [RO Fraud Detection](https://rover-ai.duckdns.org) | 🟡 SLOW | 3100 ms |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-06-11 13:42 UTC</sub>
+<sub>🤖 Checked automatically every 2 hours by GitHub Actions · last run 2026-06-11 13:42 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
