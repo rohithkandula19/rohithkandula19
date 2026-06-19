@@ -191,12 +191,12 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <!-- STATUS:START -->
 | System | Status | Response |
 |---|---|---|
-| [RO MedRAG](https://romedrag.me) | 🟢 LIVE | 703 ms |
-| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 24 ms |
-| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 94 ms |
-| [RO Fraud Detection](https://rover-ai.duckdns.org) | 🟢 LIVE | 34 ms |
+| [RO MedRAG](https://romedrag.me) | 🟢 LIVE | 261 ms |
+| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 79 ms |
+| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 118 ms |
+| [RO Fraud Detection](https://rover-ai.duckdns.org) | 🟢 LIVE | 78 ms |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-06-18 22:24 UTC</sub>
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-06-19 05:21 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
@@ -204,7 +204,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <div align="center"><h3>⚡ Recently shipped</h3></div>
 
 <!-- SHIPPED:START -->
-- **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-06-18 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
+- **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-06-19 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
 - **[.github](https://github.com/rohithkandula19/.github)** · pushed 2026-06-11 · Community health defaults
 - **[agentfaceoff](https://github.com/rohithkandula19/agentfaceoff)** · pushed 2026-06-11 · Live LLM battle arena · same prompt to two models, token-by-token split-screen streamin…
 - **[rovex-ai](https://github.com/rohithkandula19/rovex-ai)** · pushed 2026-06-11 · Enterprise fraud detection · 4-model ensemble scoring with a LangGraph investigation ag…
