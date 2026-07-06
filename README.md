@@ -192,11 +192,11 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 | System | Status | Response |
 |---|---|---|
 | [RO MedRAG](https://romedrag.me) | 🔴 DOWN | n/a |
-| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 102 ms |
-| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 112 ms |
+| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 164 ms |
+| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 37 ms |
 | [RO Fraud Detection](https://rover-ai.duckdns.org) | 🔴 DOWN | n/a |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-07-05 23:15 UTC</sub>
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-07-06 04:36 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
@@ -204,11 +204,11 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <div align="center"><h3>⚡ Recently shipped</h3></div>
 
 <!-- SHIPPED:START -->
+- **[Ro-Resume-Agent](https://github.com/rohithkandula19/Ro-Resume-Agent)** · pushed 2026-07-05 · AI resume builder + ATS scorer.
 - **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-07-01 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
 - **[.github](https://github.com/rohithkandula19/.github)** · pushed 2026-06-11 · Community health defaults
 - **[agentfaceoff](https://github.com/rohithkandula19/agentfaceoff)** · pushed 2026-06-11 · Live LLM battle arena · same prompt to two models, token-by-token split-screen streamin…
 - **[rovex-ai](https://github.com/rohithkandula19/rovex-ai)** · pushed 2026-06-11 · Enterprise fraud detection · 4-model ensemble scoring with a LangGraph investigation ag…
-- **[prior-auth-agent](https://github.com/rohithkandula19/prior-auth-agent)** · pushed 2026-06-11 · Prior-authorization agent · citation-grounded payer decisions.
 <!-- SHIPPED:END -->
 
 ---
