@@ -192,11 +192,11 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 | System | Status | Response |
 |---|---|---|
 | [RO MedRAG](https://romedrag.me) | 🔴 DOWN | n/a |
-| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 110 ms |
-| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 51 ms |
+| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 60 ms |
+| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 35 ms |
 | [RO Fraud Detection](https://rover-ai.duckdns.org) | 🔴 DOWN | n/a |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-07-12 15:12 UTC</sub>
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-07-12 17:13 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
