@@ -192,11 +192,11 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 | System | Status | Response |
 |---|---|---|
 | [RO MedRAG](https://romedrag.me) | 🔴 DOWN | n/a |
-| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 125 ms |
-| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 62 ms |
+| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 59 ms |
+| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 86 ms |
 | [RO Fraud Detection](https://rover-ai.duckdns.org) | 🔴 DOWN | n/a |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-08-26 16:56 UTC</sub>
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-08-26 19:58 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
@@ -204,7 +204,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 <div align="center"><h3>⚡ Recently shipped</h3></div>
 
 <!-- SHIPPED:START -->
-- **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-08-24 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
+- **[Ronin](https://github.com/rohithkandula19/Ronin)** · pushed 2026-08-26 · Masterless, terminal-native coding agent (Claude Code-style: reads, edits, runs code) f…
 - **[RohiRo](https://github.com/rohithkandula19/RohiRo)** · pushed 2026-08-18 · ro · a personal agent operating system.
 - **[Ro-Resume-Agent](https://github.com/rohithkandula19/Ro-Resume-Agent)** · pushed 2026-07-05 · AI resume builder + ATS scorer.
 - **[.github](https://github.com/rohithkandula19/.github)** · pushed 2026-06-11 · Community health defaults
