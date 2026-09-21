@@ -3,76 +3,68 @@
 <!-- UNIVERSE MOVING BACKGROUND -->
 <img width="100%" src="Git.svg"/>
 
-<!-- TYPING ANIMATION · ALL 6 PROJECTS -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=AI%2FML+Engineer+based+in+Charlotte%2C+NC;Ronin+%C2%B7+Provider-Agnostic+AI+Coding+Agent+%28Claude-Code-style%2C+MIT%29;RO+MedRAG+%C2%B7+Agentic+RAG+for+Medical+Literature+on+GCP;BullshiftDetector+%C2%B7+Claude-powered+LinkedIn+Cringe+Detector;RO+AI+Recommendation+Engine+%C2%B7+Netflix-style+Two-Tower+ML;ROVA+AI+Forecasting+%C2%B7+PyTorch+NN+%2B+LSTM+Platform+on+GCP;RO+Fraud+Detection+%C2%B7+Enterprise+LangGraph+AI+on+AWS;MR+Buses+%C2%B7+AI-Powered+Bus+Booking+Platform+on+GCP;Open+to+AI+Engineer+%7C+GenAI+%7C+LLM+%7C+MLOps+Roles" alt="Typing SVG" />
+<!-- TYPING ANIMATION · RONIN FIRST -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=17&pause=1200&color=00D9FF&center=true&vCenter=true&width=800&height=60&lines=Building+Ronin+%C2%B7+a+provider-agnostic+coding+agent;Claude-Code-style+in+the+terminal+%C2%B7+MIT;Consensus+%C2%B7+Dojo+%C2%B7+Kaizen+across+models;Also+ships+production+RAG%2C+agents%2C+and+ML;Charlotte%2C+NC+%C2%B7+AI%2FML+Engineer" alt="Typing SVG" />
 
 <br/>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rohith-kandula19/)
 [![Ronin](https://img.shields.io/badge/Ronin-Open_Source_Agent-7b2fff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rohithkandula19/Ronin)
-[![RO MedRAG](https://img.shields.io/badge/RO_MedRAG-Live-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://romedrag.me)
-[![BullshiftDetector](https://img.shields.io/badge/BullshiftDetector-Live-FF4444?style=for-the-badge&logo=googlechrome&logoColor=white)](https://bullshiftdetector.web.app)
-[![MR Buses](https://img.shields.io/badge/MR_Buses-Live-00FF88?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mrbusportal.com)
-[![Fraud Detection](https://img.shields.io/badge/RO_Fraud_Detection-Live-FFD700?style=for-the-badge&logo=googlechrome&logoColor=black)](https://rover-ai.duckdns.org)
-[![Open To Work](https://img.shields.io/badge/Open_To_Work-AI_Engineer-7b2fff?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
-[![Ask My AI](https://img.shields.io/badge/🤖_Ask_My_AI-the_site_talks_back-FF6B9D?style=for-the-badge)](https://www.rohithkandula.com)
-
-<br/>
-
+[![Star](https://img.shields.io/github/stars/rohithkandula19/Ronin?style=for-the-badge&logo=github&label=Stars)](https://github.com/rohithkandula19/Ronin)
+[![Portfolio](https://img.shields.io/badge/Portfolio-rohithkandula.com-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.rohithkandula.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rohith-kandula19/)
 
 </div>
 
 ---
 
-<div align="center"><h2>🌌 WHO AM I</h2></div>
+<div align="center"><h2>🗡️ RONIN</h2>
+<p><i>The thing I want you to look at first.</i></p>
+</div>
 
-I'm an AI/ML Engineer who gets a kick out of taking ideas from zero to production. Not the kind who fine-tunes a model in a notebook and calls it a day. I mean actually shipping things: APIs, cloud deployments, real users, real data.
-
-I've spent the last 4+ years obsessing over the full stack of AI: from training PyTorch models and building RAG pipelines to wiring up Kafka event streams and deploying on GCP and AWS. If it involves LLMs, agents, or real-time ML, I've probably broken it three times and shipped it on the fourth.
-
-Right now I'm building toward roles at companies that actually push the frontier: Anthropic, OpenAI, Google DeepMind. Not because of the hype, but because I genuinely care about where this technology goes.
-
-```python
-rohith = {
-    "location"  : "Charlotte, NC",
-    "education" : "MS Information Technology, University of Cincinnati (GPA: 3.89)",
-    "cert"      : "AWS Solutions Architect Associate",
-    "currently" : "Building production AI systems. Shipping. Repeating.",
-    "targeting" : ["Anthropic", "OpenAI", "Google DeepMind", "Meta AI"],
-    "status"    : "Open to AI Engineer | GenAI | LLM | MLOps (US)",
-}
-```
-
----
-
-<div align="center"><h2>🗡️ OPEN SOURCE: RONIN</h2></div>
-
-### [Ronin: a masterless, provider-agnostic AI coding agent](https://github.com/rohithkandula19/Ronin)
+### [A masterless, provider-agnostic AI coding agent](https://github.com/rohithkandula19/Ronin)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Ronin-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/Ronin)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 ![Tests](https://img.shields.io/badge/tests-1%2C376_passing-brightgreen?style=flat-square)
 ![Runs on](https://img.shields.io/badge/runs_on-Claude_or_free_models-d4a373?style=flat-square)
 
-A Claude-Code-style terminal agent that reads, edits, and runs your code, every write behind a diff you approve. Built on a **provider-agnostic** framework, so the same agent runs on Claude for top quality or **free** on Gemini / Cerebras / Groq / Ollama (`--offline` strips every network tool for air-gapped coding). The multi-provider design unlocks things a single-vendor agent structurally can't:
+Ronin is a Claude-Code-style terminal agent: it reads, edits, and runs your code, and every write sits behind a diff you approve. The stack is **provider-agnostic**, so the same agent runs on Claude when you want quality, or free on Gemini / Cerebras / Groq / Ollama. `--offline` strips every network tool for air-gapped work.
 
-- **Consensus**: run a task across several models in parallel; a judge synthesizes one cross-checked answer
-- **Dojo**: rival models each attempt the same change in isolated git worktrees; a judge picks the best diff
-- **Kaizen**: the agent finds a weakness in its *own* source, fixes it in a worktree, and keeps the diff only if the test suite passes
+Multi-provider is the point, not a toggle:
+
+- **Consensus** — several models run the same task; a judge returns one cross-checked answer
+- **Dojo** — rival models each attempt the change in isolated git worktrees; a judge keeps the best diff
+- **Kaizen** — the agent finds a weakness in *its own* source, patches it in a worktree, and keeps the diff only if tests pass
 
 ```
-Python  ->  7-package monorepo  ->  1,376 offline tests  ->  MCP + 200 plugins
+Python  →  7-package monorepo  →  1,376 offline tests  →  MCP + 200 plugins
 ```
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat-square&logo=anthropic&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP-1C3C3C?style=flat-square)
+If you only click one link on this profile: **[star / clone Ronin](https://github.com/rohithkandula19/Ronin)**.
+
+---
+
+<div align="center"><h2>🌌 WHO AM I</h2></div>
+
+AI/ML engineer in Charlotte. I ship agents and production ML — APIs, cloud, real users — not notebook demos.
+
+Most of that energy now goes into **Ronin**. The other systems below are how I learned to put LLM and ML systems on the internet and keep them there.
+
+```python
+rohith = {
+    "location"  : "Charlotte, NC",
+    "education" : "MS Information Technology, University of Cincinnati (GPA: 3.89)",
+    "cert"      : "AWS Solutions Architect Associate",
+    "currently" : "Building Ronin. Shipping the rest.",
+    "status"    : "Open to AI Engineer | GenAI | LLM roles (US)",
+}
+```
 
 ---
 
 <div align="center">
-<h2>🚀 THINGS I'VE BUILT AND SHIPPED</h2>
-<p><i>6 production systems. All live. All mine.</i></p>
+<h2>🚀 ALSO SHIPPED</h2>
+<p><i>Live systems. Useful context. Not the main plot.</i></p>
 </div>
 
 <table>
@@ -82,32 +74,25 @@ Python  ->  7-package monorepo  ->  1,376 offline tests  ->  MCP + 200 plugins
 ### 🧠 [RO MedRAG](https://romedrag.me)
 [![Live](https://img.shields.io/badge/LIVE-romedrag.me-00D9FF?style=flat-square)](https://romedrag.me)
 
-Medical research is buried in millions of papers. I built an agentic RAG system that searches PubMed in real-time, pulls the right papers, and synthesizes clinical answers using Claude Sonnet, all streamed live to the user.
+Agentic RAG over PubMed. Searches, pulls papers, synthesizes clinical answers with Claude Sonnet, streamed live.
 
 ```
-LangGraph -> FAISS -> PubMed API -> Claude Sonnet
-FastAPI -> GCP Cloud Run -> PostgreSQL -> SSE
+LangGraph → FAISS → PubMed → Claude
+FastAPI → Cloud Run → PostgreSQL → SSE
 ```
-![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square)
-![FAISS](https://img.shields.io/badge/FAISS-00599C?style=flat-square)
-![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat-square)
 
 </td>
 <td width="50%" valign="top">
 
-### 🎯 [RO AI Recommendation Engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
+### 🎯 [RO Recommendation Engine](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/ro-ai-recommendation-engine)
 
-I got curious about how Netflix actually works under the hood. So I built it. A proper two-tower PyTorch model with BPR loss, 4-source candidate generation, LightGBM reranking, and a Kafka event pipeline on Kubernetes.
+Two-tower PyTorch + BPR, candidate generation, LightGBM rerank, Kafka on Kubernetes.
 
 ```
-PyTorch BPR -> FAISS IVFPQ -> LightGBM LTR -> MMR
-Kafka -> ClickHouse -> Kubernetes HPA -> Terraform EKS
+PyTorch BPR → FAISS → LightGBM → MMR
+Kafka → ClickHouse → EKS
 ```
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![Kafka](https://img.shields.io/badge/Kafka-231F20?style=flat-square&logo=apachekafka&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
 
 </td>
 </tr>
@@ -117,31 +102,25 @@ Kafka -> ClickHouse -> Kubernetes HPA -> Terraform EKS
 ### 💩 [BullshiftDetector](https://bullshiftdetector.web.app)
 [![Live](https://img.shields.io/badge/LIVE-bullshiftdetector.web.app-FF4444?style=flat-square)](https://bullshiftdetector.web.app)
 
-I got tired of seeing "Humbled and excited to announce" for the 50th time. So I built a Claude-powered detector that scores LinkedIn posts for corporate cringe (0-100), generates a one-line roast, and rewrites it like a normal human. Because someone had to.
+Scores LinkedIn posts for corporate cringe, roasts them, rewrites them like a human.
 
 ```
-Claude API -> FastAPI -> Next.js 14
-GCP Cloud Run -> Firebase Hosting
+Claude API → FastAPI → Next.js
+Cloud Run → Firebase Hosting
 ```
-![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat-square)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
 
 </td>
 <td width="50%" valign="top">
 
-### 📊 [ROVA AI Forecasting](https://github.com/rohithkandula19/rova-ai-forecasting)
+### 📊 [ROVA Forecasting](https://github.com/rohithkandula19/rova-ai-forecasting)
 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/rohithkandula19/rova-ai-forecasting)
 
-A full ML forecasting platform with a proper pipeline: PyTorch NN + LSTM ensemble, 128-dimensional feature engineering, SHAP attributions for explainability, and KL-divergence drift detection that auto-retrains when the distribution shifts. 14 screens on GCP.
+PyTorch NN + LSTM ensemble, SHAP, drift detection that retrains when the distribution moves.
 
 ```
-PyTorch NN + LSTM -> MLflow -> Celery + Redis
-Prometheus + Grafana -> GCP Cloud Run
+PyTorch + LSTM → MLflow → Celery
+Prometheus + Grafana → Cloud Run
 ```
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=flat-square&logo=mlflow&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
 
 </td>
 </tr>
@@ -151,15 +130,12 @@ Prometheus + Grafana -> GCP Cloud Run
 ### 🔍 [RO Fraud Detection](https://rover-ai.duckdns.org)
 [![Live](https://img.shields.io/badge/LIVE-rover--ai.duckdns.org-00FF88?style=flat-square)](https://rover-ai.duckdns.org)
 
-Enterprise fraud detection with LangGraph agents doing the heavy lifting: real-time risk scoring, multi-step reasoning on each transaction, full audit trail on every decision. Deployed on AWS EC2 with Nginx and SSL. Actually production-grade.
+LangGraph agents for real-time risk scoring and an audit trail on every decision.
 
 ```
-LangGraph Agents -> FastAPI -> SQLAlchemy
-AWS EC2 -> Docker -> Nginx -> Let's Encrypt
+LangGraph → FastAPI → SQLAlchemy
+EC2 → Docker → Nginx
 ```
-![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
 </td>
 <td width="50%" valign="top">
@@ -167,15 +143,12 @@ AWS EC2 -> Docker -> Nginx -> Let's Encrypt
 ### 🚌 [MR Buses](https://mrbusportal.com)
 [![Live](https://img.shields.io/badge/LIVE-mrbusportal.com-00D9FF?style=flat-square)](https://mrbusportal.com)
 
-A full interstate bus booking platform with an AI chatbot that actually knows the routes, schedules, and can help you book, not just answer FAQs. Google OAuth, real-time seat booking, admin dashboard. Live on GCP.
+Interstate booking plus an AI chatbot that knows routes and can help you book.
 
 ```
-LangChain RAG -> FastAPI -> GCP Cloud Run
-Cloud SQL PostgreSQL -> Firebase Hosting
+LangChain RAG → FastAPI → Cloud Run
+Cloud SQL → Firebase Hosting
 ```
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square)
-![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 
 </td>
 </tr>
@@ -184,7 +157,7 @@ Cloud SQL PostgreSQL -> Firebase Hosting
 ---
 
 <div align="center"><h2>🛰️ LIVE STATUS</h2>
-<p><i>"All live" isn't a slogan. A GitHub Action pings every deployment and rewrites this table. Receipts, not vibes.</i></p></div>
+<p><i>A GitHub Action pings the public deployments and rewrites this table.</i></p></div>
 
 <div align="center">
 
@@ -222,103 +195,39 @@ flowchart LR
         Events[Events] --> Kafka[Kafka] --> CH[(ClickHouse / BigQuery)]
     end
     subgraph Brain["🧠 Agents & Models"]
-        VS --> LG[LangGraph: supervisor · planner-executor · HITL]
-        LG <--> Claude[Claude API]
+        VS --> LG[LangGraph / Ronin planner]
+        LG <--> Claude[Claude · Gemini · Groq · Ollama]
         PT[PyTorch Two-Tower / LSTM] --> LGB[LightGBM Rerank]
     end
     subgraph Evals["🧪 Evals & Observability"]
-        LG --> EV[RAGAS · golden datasets · LLM-as-judge]
+        LG --> EV[golden sets · LLM-as-judge]
         EV --> LF[Langfuse: traces · cost · drift]
     end
     subgraph Serve["🚀 Serving & Infra"]
         LG --> API[FastAPI + SSE]
         LGB --> API
         API --> UI[Next.js / React]
-        API --> Cloud[GCP · AWS · Azure] --> K8s[Kubernetes + Terraform]
+        API --> Cloud[GCP · AWS] --> K8s[Kubernetes + Terraform]
     end
 ```
 
 <div align="center">
 
-**Languages**
+**Core**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-
-**LLMs & GenAI**
-
 ![Claude API](https://img.shields.io/badge/Claude_API-D97757?style=for-the-badge&logo=anthropic&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
-![Gemini / Vertex AI](https://img.shields.io/badge/Gemini_/_Vertex_AI-4285F4?style=for-the-badge&logo=googlegemini&logoColor=white)
-![Azure OpenAI](https://img.shields.io/badge/Azure_OpenAI-0078D4?style=for-the-badge)
-![Hugging Face](https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
-![Llama](https://img.shields.io/badge/Llama-0467DF?style=for-the-badge)
-![Mistral](https://img.shields.io/badge/Mistral-FA520F?style=for-the-badge)
-![LoRA / QLoRA](https://img.shields.io/badge/LoRA_/_QLoRA-6E56CF?style=for-the-badge)
-
-**Agents · RAG · Vectors**
-
-![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langgraph&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
-![LlamaIndex](https://img.shields.io/badge/LlamaIndex-6741D9?style=for-the-badge)
 ![MCP](https://img.shields.io/badge/MCP-000000?style=for-the-badge)
-![FAISS](https://img.shields.io/badge/FAISS-00599C?style=for-the-badge)
-![pgvector](https://img.shields.io/badge/pgvector-4169E1?style=for-the-badge)
-![Chroma](https://img.shields.io/badge/Chroma-FF6B35?style=for-the-badge)
-![Pinecone](https://img.shields.io/badge/Pinecone-0C0C20?style=for-the-badge)
-
-**Evaluation & Observability**
-
-![Langfuse](https://img.shields.io/badge/Langfuse-0A60F0?style=for-the-badge)
-![RAGAS](https://img.shields.io/badge/RAGAS-8B5CF6?style=for-the-badge)
-![LLM-as-a-Judge](https://img.shields.io/badge/LLM--as--a--Judge-1F2937?style=for-the-badge)
-![Golden Datasets](https://img.shields.io/badge/Golden_Datasets-B45309?style=for-the-badge)
-![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)
-
-**ML & DL**
-
+![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-189FDD?style=for-the-badge)
-![LightGBM](https://img.shields.io/badge/LightGBM-2C9F42?style=for-the-badge)
-![SHAP](https://img.shields.io/badge/SHAP-D81B60?style=for-the-badge)
-
-**Voice & Real-Time**
-
-![LiveKit](https://img.shields.io/badge/LiveKit-FF2E63?style=for-the-badge)
-![ElevenLabs](https://img.shields.io/badge/ElevenLabs-000000?style=for-the-badge&logo=elevenlabs&logoColor=white)
-![Deepgram](https://img.shields.io/badge/Deepgram-13EF93?style=for-the-badge&logo=deepgram&logoColor=black)
-![WebSockets](https://img.shields.io/badge/WebSockets-2D3748?style=for-the-badge)
-![SSE Streaming](https://img.shields.io/badge/SSE_Streaming-0369A1?style=for-the-badge)
-
-**Backend · Cloud · Infra**
-
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![GCP](https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white)
-![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge)
-
-**Data & Frontend**
-
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![BigQuery](https://img.shields.io/badge/BigQuery-669DF6?style=for-the-badge&logo=googlebigquery&logoColor=white)
-![ClickHouse](https://img.shields.io/badge/ClickHouse-FFCC01?style=for-the-badge&logo=clickhouse&logoColor=black)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-![Kafka](https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)
 ![Next.js 14](https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+
 </div>
 
 ---
@@ -350,7 +259,6 @@ flowchart LR
   <img src="dist/pacman-contribution-graph.svg" width="100%" alt="Pac-Man eating my contribution graph, regenerated daily"/>
 </picture>
 
-
 </div>
 
 ---
@@ -375,10 +283,11 @@ flowchart LR
 
 <div align="center">
 
+[![Ronin](https://img.shields.io/badge/Start_with_Ronin-7b2fff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rohithkandula19/Ronin)
 [![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rohith-kandula19)
 [![Portfolio](https://img.shields.io/badge/Portfolio-rohithkandula.com-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.rohithkandula.com)
 
-<sub>🤖 The portfolio has an AI narrator and an "Ask Rohith" chat, and it rewrites itself depending on whether you're a recruiter, an engineer, or just curious. Go say hi.</sub>
+<sub>Ronin is the open-source line. The portfolio talks back if you want the rest of the story.</sub>
 
 </div>
 
