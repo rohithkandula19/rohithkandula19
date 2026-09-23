@@ -18,7 +18,7 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
       - name: Commit if changed
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Rohith Kandula"
+          git config user.email "rohithkandula937@gmail.com"
           git add dist
           git diff --cached --quiet || { git commit -m "chore: regenerate pac-man graph [skip ci]"; git pull --rebase origin main; git push; }
