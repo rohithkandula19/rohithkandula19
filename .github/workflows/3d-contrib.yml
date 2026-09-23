@@ -20,6 +20,6 @@ jobs:
       - name: Commit if changed
         run: |
           git config user.name "Rohith Kandula"
-          git config user.email "rohithkandula937@gmail.com"
+          git config user.email "203910037+rohithkandula19@users.noreply.github.com"
           git add profile-3d-contrib/
           git diff --cached --quiet || { git commit -m "chore: regenerate 3D contribution graph [skip ci]"; git pull --rebase origin main; git push; }
