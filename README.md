@@ -17,7 +17,7 @@
 
 ---
 
-<div align="center"><h2>🗡️ RONIN</h2>
+<div align="center"><h2>🪓 RONIN</h2>
 <p><i>The thing I want you to look at first.</i></p>
 </div>
 
@@ -59,6 +59,20 @@ rohith = {
     "status"    : "Open to AI Engineer | GenAI | LLM roles (US)",
 }
 ```
+
+<div align="center"><h2>🏆 GITHUB ACHIEVEMENTS</h2></div>
+
+<div align="center">
+
+[![Pull Shark](https://github.githubassets.com/assets/pull-shark-default-498c279a747d.png)](https://github.com/rohithkandula19?tab=achievements)
+[![Pair Extraordinaire](https://github.githubassets.com/assets/pair-extraordinaire-default-579438a20e01.png)](https://github.com/rohithkandula19?tab=achievements)
+[![Public Sponsor](https://github.githubassets.com/assets/public-sponsor-default-4d68a05d20c8.png)](https://github.com/rohithkandula19?tab=achievements)
+[![YOLO](https://github.githubassets.com/assets/yolo-default-bec7ad0aef58.png)](https://github.com/rohithkandula19?tab=achievements)
+[![Quickdraw](https://github.githubassets.com/assets/quickdraw-default-24f3b5c9278b.png)](https://github.com/rohithkandula19?tab=achievements)
+
+<sub>Pull Shark x3 · Pair Extraordinaire x4 · Public Sponsor · YOLO · Quickdraw</sub>
+
+</div>
 
 ---
 
