@@ -179,11 +179,11 @@ Cloud SQL → Firebase Hosting
 | System | Status | Response |
 |---|---|---|
 | [RO MedRAG](https://romedrag.me) | 🔴 DOWN | n/a |
-| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 109 ms |
-| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 282 ms |
+| [BullshiftDetector](https://bullshiftdetector.web.app) | 🟢 LIVE | 221 ms |
+| [MR Buses](https://mrbusportal.com) | 🟢 LIVE | 78 ms |
 | [RO Fraud Detection](https://rover-ai.duckdns.org) | 🔴 DOWN | n/a |
 
-<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-10-17 15:31 UTC</sub>
+<sub>🤖 Checked automatically every 6 hours by GitHub Actions · last run 2026-10-17 18:26 UTC</sub>
 <!-- STATUS:END -->
 
 </div>
